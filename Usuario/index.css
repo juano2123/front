@@ -9,17 +9,32 @@ html, body {
     height: 100%;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: #f0f0f0;
+}
+
+.content-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
+.background-image {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1; /* Coloca la imagen detrás del formulario */
+}
+
 .login-container {
+    position: absolute;
+    z-index: 1; /* Asegura que el formulario esté encima de la imagen */
     background: #fff;
     padding: 40px;
     border-radius: 10px;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-    width: 100%;
     max-width: 400px;
     text-align: center;
 }
@@ -48,21 +63,21 @@ input[type="submit"] {
     border: none;
     border-radius: 5px;
     color: white;
-    background: #ff5c5c; /* Color rojo para el botón de inicio de sesión del usuario */
+    background: #82ae80; /* Color rojo para el botón de inicio de sesión del usuario */
     cursor: pointer;
     font-size: 16px;
     transition: background 0.3s ease;
 }
 
 input[type="submit"]:hover {
-    background: #e54c4c; /* Un tono de rojo más oscuro para el hover */
+    background: #82ae80; /* Un tono de rojo más oscuro para el hover */
 }
 
 .toggle-button {
     background: none;
-    color: #ff5c5c; /* Color rojo para el texto del botón de cambio */
+    color: #82ae80; /* Color rojo para el texto del botón de cambio */
     padding: 10px;
-    border: 2px solid #ff5c5c; /* Borde rojo para el botón de cambio */
+    border: 2px solid #82ae80; /* Borde rojo para el botón de cambio */
     border-radius: 5px;
     margin-top: 20px;
     cursor: pointer;
@@ -70,7 +85,7 @@ input[type="submit"]:hover {
 }
 
 .toggle-button:hover {
-    background: #ff5c5c; /* Fondo rojo para el hover */
+    background: #82ae80; /* Fondo rojo para el hover */
     color: white;
 }
 
@@ -88,5 +103,3 @@ input[type="submit"]:hover {
         padding: 10px;
     }
 }
-
-

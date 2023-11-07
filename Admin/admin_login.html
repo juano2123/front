@@ -7,17 +7,21 @@
     <link rel="stylesheet" href="admin_style.css">
 </head>
 <body>
-    <div class="login-container">
-        <h2>Iniciar Sesión de Administrador</h2>
-        <form action="/admin_login" method="post">
-            <input type="text" name="admin_username" placeholder="Nombre de administrador" required>
-            <input type="password" name="admin_password" placeholder="Contraseña" required>
-            <input type="submit" value="Iniciar Sesión">
-        </form>
-        <button class="toggle-button" onclick="window.location='../usuario/index.html'">Iniciar Sesión de Usuario</button>
+    <div class="content-wrapper">
+        <!-- Asegúrate de reemplazar 'admin_background.png' con la ruta correcta a tu imagen de fondo -->
+        <img src="imagen.png" alt="Fondo para administrador" class="background-image">
+        <div class="login-container">
+            <h2>Iniciar Sesión de Administrador</h2>
+            <form action="/admin_login" method="post">
+                <input type="text" name="admin_username" placeholder="Nombre de administrador" required>
+                <input type="password" name="admin_password" placeholder="Contraseña" required>
+                <input type="submit" value="Iniciar Sesión">
+            </form>
+            <button class="toggle-button" onclick="window.location='../usuario/index.html'">Iniciar Sesión de Usuario</button>
+        </div>
     </div>
     <script>
-        // Aquí ya no necesitas JavaScript para mostrar/ocultar formularios
+        // El JavaScript no es necesario para mostrar/ocultar formularios
     </script>
 </body>
 </html>
