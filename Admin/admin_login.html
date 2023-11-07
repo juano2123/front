@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión de Administrador</title>
+    <link rel="stylesheet" href="admin_style.css">
+</head>
+<body>
+    <div class="login-container">
+        <h2>Iniciar Sesión de Administrador</h2>
+        <form action="/admin_login" method="post">
+            <input type="text" name="admin_username" placeholder="Nombre de administrador" required>
+            <input type="password" name="admin_password" placeholder="Contraseña" required>
+            <input type="submit" value="Iniciar Sesión">
+        </form>
+        <button class="toggle-button" onclick="window.location='../usuario/index.html'">Iniciar Sesión de Usuario</button>
+    </div>
+    <script>
+        // Aquí ya no necesitas JavaScript para mostrar/ocultar formularios
+    </script>
+</body>
+</html>

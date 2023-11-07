@@ -1,0 +1,92 @@
+/* Reset básico para remover estilos por defecto */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-container {
+    background: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+input[type="text"],
+input[type="password"] {
+    padding: 15px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 5px;
+    background: #eee;
+}
+
+input[type="submit"] {
+    padding: 15px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    background: #ff5c5c; /* Color rojo para el botón de inicio de sesión del usuario */
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s ease;
+}
+
+input[type="submit"]:hover {
+    background: #e54c4c; /* Un tono de rojo más oscuro para el hover */
+}
+
+.toggle-button {
+    background: none;
+    color: #ff5c5c; /* Color rojo para el texto del botón de cambio */
+    padding: 10px;
+    border: 2px solid #ff5c5c; /* Borde rojo para el botón de cambio */
+    border-radius: 5px;
+    margin-top: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.toggle-button:hover {
+    background: #ff5c5c; /* Fondo rojo para el hover */
+    color: white;
+}
+
+/* Agregar media queries para responsividad */
+@media (max-width: 600px) {
+    .login-container {
+        width: 90%;
+        padding: 20px;
+    }
+
+    input[type="text"],
+    input[type="password"],
+    input[type="submit"],
+    .toggle-button {
+        padding: 10px;
+    }
+}
+
+
