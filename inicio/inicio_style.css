@@ -92,6 +92,30 @@ main.dashboard-container {
     align-items: center;
     flex-direction: column; 
 }
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+}
+
+.nav-links li {
+    padding: 0 10px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: black; /* O el color que prefieras para los enlaces */
+}
+
+.nav-links a.active {
+    color: white; /* Color para resaltar la página actual */
+}
 
 @media (max-width: 800px) {
     .dashboard-container {
