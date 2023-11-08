@@ -43,55 +43,71 @@
         </div>
         <h2>DATOS CAPTURADOS</h2>
         <div class="row text-center">
-            <table id="var1" class="table table-success table-striped w-100 col" id="tabla-datos">
-                <thead>
-                    <tr>
-                        <th scope="col">calidad aire </th>
-                        <th scope="col">CONTEXTO </th>
-                        <th scope="col">FECHA</th>
-                    </tr>
-                </thead>
-                <tbody>
-                </tbody>
-            </table>
-
-            <table id="var2" class="table table-success table-striped w-100 col" id="tabla-datos">
-                <thead>
-                    <tr>
-                        <th scope="col">concentracionco</th>
-                        <th scope="col">CONTEXTO</th>
-                        <th scope="col">FECHA</th>
-                    </tr>
-                </thead>
-                <tbody>
-                </tbody>
-            </table> 
-
-            <table id="var3" class="table table-success table-striped w-100 col" id="tabla-datos">
-                <thead>
-                    <tr>
-                        <th scope="col">humedad</th>
-                        <th scope="col">CONTEXTO</th>
-                        <th scope="col">FECHA</th>
-                    </tr>
-                </thead>
-                <tbody>
-                </tbody>
-            </table>
-
-            <table id="var4" class="table table-success table-striped w-100 col" id="tabla-datos">
-                <thead>
-                    <tr>
-                        <th scope="col">temperatura</th>
-                        <th scope="col">CONTEXTO</th>
-                        <th scope="col">FECHA</th>
-                    </tr>
-                </thead>
-                <tbody>
-                </tbody>
-            </table>
-
+            <!-- Contenedor de la tabla de calidad del aire -->
+            <div class="table-container">
+                <table id="var1" class="table table-success table-striped w-100">
+                    <thead>
+                        <tr>
+                            <th scope="col">Calidad del Aire</th>
+                            <th scope="col">Contexto</th>
+                            <th scope="col">Fecha</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Los datos se insertarán aquí -->
+                    </tbody>
+                </table>
+            </div>
+        
+            <!-- Contenedor de la tabla de concentración de CO -->
+            <div class="table-container">
+                <table id="var2" class="table table-success table-striped w-100">
+                    <thead>
+                        <tr>
+                            <th scope="col">Concentración CO</th>
+                            <th scope="col">Contexto</th>
+                            <th scope="col">Fecha</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Los datos se insertarán aquí -->
+                    </tbody>
+                </table>
+            </div>
+        
+            <!-- Contenedor de la tabla de humedad -->
+            <div class="table-container">
+                <table id="var3" class="table table-success table-striped w-100">
+                    <thead>
+                        <tr>
+                            <th scope="col">Humedad</th>
+                            <th scope="col">Contexto</th>
+                            <th scope="col">Fecha</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Los datos se insertarán aquí -->
+                    </tbody>
+                </table>
+            </div>
+        
+            <!-- Contenedor de la tabla de temperatura -->
+            <div class="table-container">
+                <table id="var4" class="table table-success table-striped w-100">
+                    <thead>
+                        <tr>
+                            <th scope="col">Temperatura</th>
+                            <th scope="col">Contexto</th>
+                            <th scope="col">Fecha</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Los datos se insertarán aquí -->
+                    </tbody>
+                </table>
+            </div>
         </div>
+        
         
     </main>
     <!-- ... -->
@@ -192,13 +208,13 @@
                 fetch(urlVar3)
                     .then(response => response.json())
                     .then(data => {
-                        updateCard('#card3', 'humendad', data.results[0].value);
+                        updateCard('#card3', 'Humedad', data.results[0].value);
                     })
                     .catch(error => console.error('Error al obtener datos de concentración de CO:', error));
                 fetch(urlVar4)
                     .then(response => response.json())
                     .then(data => {
-                        updateCard('#card4', 'temperatura', data.results[0].value);
+                        updateCard('#card4', 'Temperatura', data.results[0].value);
                     })
                     .catch(error => console.error('Error al obtener datos de concentración de CO:', error));
 
