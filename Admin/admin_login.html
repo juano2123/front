@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Iniciar Sesión de Administrador</title>
     <link rel="stylesheet" href="admin_style.css">
 </head>
+
 <body>
     <div class="content-wrapper">
         <!-- Asegúrate de reemplazar 'admin_background.png' con la ruta correcta a tu imagen de fondo -->
@@ -17,11 +19,48 @@
                 <input type="password" name="admin_password" placeholder="Contraseña" required>
                 <input type="submit" value="Iniciar Sesión">
             </form>
-            <button class="toggle-button" onclick="window.location='../usuario/index.html'">Iniciar Sesión de Usuario</button>
+            <button class="toggle-button" onclick="window.location='../usuario/index.html'">Iniciar Sesión de
+                Usuario</button>
         </div>
     </div>
     <script>
-        // El JavaScript no es necesario para mostrar/ocultar formularios
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const form = document.querySelector('form');
+
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                const adminUsername = document.querySelector('input[name="admin_username"]').value;
+                const adminPassword = document.querySelector('input[name="admin_password"]').value;
+
+                fetch('http://localhost:4000/admin_login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        username: adminUsername,
+                        password: adminPassword
+                    }),
+                })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok: ' + response.statusText);
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        console.log(data);
+                        // Aquí manejas la respuesta. Por ejemplo, redireccionar al usuario o mostrar un mensaje.
+                    })
+                    .catch((error) => {
+                        console.error('Error:', error);
+                    });
+
+            });
+        });
+
     </script>
 </body>
+
 </html>
