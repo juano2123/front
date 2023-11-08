@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard de Calidad del Aire</title>
+    <link rel="stylesheet" href="inicio_style.css">
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="/signout" class="signout-button">Cerrar Sesión</a>
+        </div>
+    </nav>
+    <header>
+        <h1>Dashboard de Monitoreo Ambiental</h1>
+    </header>
+    <main class="dashboard-container">
+        <div class="data-container">
+            <div class="data-box">
+                <h3>Calidad del Aire</h3>
+                <p id="air-quality">--</p>
+            </div>
+            <div class="data-box">
+                <h3>Temperatura</h3>
+                <p id="temperature">-- °C</p>
+            </div>
+            <div class="data-box">
+                <h3>Humedad</h3>
+                <p id="humidity">-- %</p>
+            </div>
+            <div class="data-box">
+                <h3>Monóxido de Carbono</h3>
+                <p id="carbon-monoxide">-- ppm</p>
+            </div>
+        </div>
+        <div class="alerts-container">
+            <h3>Alertas</h3>
+            <p id="alerts-count">0</p>
+        </div>
+    </main>
+
+    <script>
+        // Aquí iría el JavaScript para actualizar los valores con datos reales
+    </script>
+</body>
+</html>
+

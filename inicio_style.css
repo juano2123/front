@@ -1,0 +1,113 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #eaf4f4;
+    padding-top: 60px; /* espacio para la barra de navegación */
+}
+
+nav {
+    background: #69a2b0;
+    color: white;
+    position: fixed; /* fijar la barra de navegación en la parte superior */
+    top: 0;
+    width: 100%;
+    z-index: 1000; /* asegurar que la barra de navegación esté sobre otros elementos */
+    padding: 10px 20px;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.signout-button {
+    color: #eaf4f4;
+    text-decoration: none;
+    padding: 5px 10px;
+    background: #a9cfd1;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.signout-button:hover {
+    background-color: #c03a2bb5;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px; /* Ajustar según sea necesario */
+}
+
+header h1 {
+    color: #333;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+main.dashboard-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.data-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    
+}
+
+.data-box {
+    background: #a9cfd1;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 250px; /* Ajustar el ancho de los contenedores */
+    height: 150px; /* Ajustar la altura de los contenedores */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; 
+}
+
+.alerts-container {
+    background: #c03a2bb5;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    width: 250px; /* Ajustar el ancho del contenedor de alertas */
+    height: 150px; /* Ajustar la altura del contenedor de alertas */
+    margin-left: 20px; /* Espacio entre los contenedores de datos y alertas */
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; 
+}
+
+@media (max-width: 800px) {
+    .dashboard-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .data-container,
+    .alerts-container {
+        width: 100%;
+        max-width: 350px; /* Ajustar para una mejor visualización en móviles */
+    }
+
+    .alerts-container {
+        margin-left: 0; /* Quitar el espacio extra en vista móvil */
+        margin-top: 20px; /* Espacio entre los contenedores en vista móvil */
+    }
+}
+
