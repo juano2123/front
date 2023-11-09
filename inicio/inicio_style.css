@@ -181,6 +181,11 @@ th {
     z-index: 100; /* Asegúrate de que los encabezados se queden por encima del contenido al desplazarse */
 }
 
+.grafica-container canvas {
+    width: 600px; /* Ancho deseado */
+    height: 400px; /* Alto deseado */
+}
+
 /* Media queries para responsividad */
 @media (max-width: 800px) {
     .row {
