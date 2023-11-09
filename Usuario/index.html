@@ -11,16 +11,39 @@
         <img src="imagen.png" alt="Árboles con aire limpio" class="login-image">
         <div class="login-container">
             <h2>Iniciar Sesión de Usuario</h2>
-            <form action="/login" method="post">
-                <input type="text" name="username" placeholder="Nombre de usuario" required>
-                <input type="password" name="password" placeholder="Contraseña" required>
+            <form id="loginForm">
+                <input type="text" id="admin_username" placeholder="Nombre de administrador" required>
+                <input type="password" id="admin_password" placeholder="Contraseña" required>
                 <input type="submit" value="Iniciar Sesión">
-            </form>
+              </form>
             <button class="toggle-button" onclick="window.location='../admin/admin_login.html'">Iniciar Sesión de Administrador</button>
         </div>
     </div>
     <script>
-        // No se necesita JavaScript para mostrar/ocultar formularios
-    </script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+          const form = document.getElementById('loginForm');
+          const errorMessage = document.getElementById('error_message');
+    
+          form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const adminUsername = document.getElementById('admin_username').value;
+            const adminPassword = document.getElementById('admin_password').value;
+    
+            // Credenciales hardcodeadas para el ejemplo
+            const hardcodedUsername = 'user';
+            const hardcodedPassword = 'user123';
+    
+            if(adminUsername === hardcodedUsername && adminPassword === hardcodedPassword) {
+              // Credenciales correctas
+              // Aquí deberías redirigir al usuario a la página de inicio o dashboard
+              window.location.href = '/inicio_usuario/inicio_usuario.html';
+            } else {
+              // Credenciales incorrectas, mostrar mensaje de error
+              errorMessage.textContent = 'Credenciales inválidas. Por favor, intenta de nuevo.';
+            }
+          });
+        });
+      </script>
 </body>
 </html>
