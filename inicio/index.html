@@ -26,9 +26,9 @@
             const errorMessage = document.getElementById('error_message');
             
             const userRoutes = {
-                'user1': '/inicio/inicio_usuario.html',
-                'user2': '/inicio/dis1.html',
-                'user3': '/inicio/dis2.html'
+                'user1': '../inicio/inicio_usuario.html',
+                'user2': '../inicio/dis1.html',
+                'user3': '../inicio/dis2.html'
             };
 
             const userPasswords = {
@@ -44,7 +44,9 @@
                 const password = document.getElementById('admin_password').value;
                 
                 if(userPasswords[username] && password === userPasswords[username]) {
-                    window.location.href = userRoutes[username];
+                    // Cambiar el action del formulario y enviarlo
+                    form.action = userRoutes[username];
+                    form.submit();
                 } else {
                     errorMessage.textContent = 'Credenciales inválidas. Por favor, intenta de nuevo.';
                 }
