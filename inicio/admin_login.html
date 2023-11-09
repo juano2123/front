@@ -19,7 +19,7 @@
                 <input type="password" id="admin_password" placeholder="Contraseña" required>
                 <input type="submit" value="Iniciar Sesión">
               </form>
-              <button class="toggle-button" onclick="window.location='../usuario/index.html'">Iniciar Sesión de Usuario</button>
+              <button class="toggle-button" onclick="window.location='/inicio/index.html'">Iniciar Sesión de Usuario</button>
         </div>
     </div>
     <script>
@@ -40,7 +40,7 @@
             if(adminUsername === hardcodedUsername && adminPassword === hardcodedPassword) {
               // Credenciales correctas
               // Aquí deberías redirigir al usuario a la página de inicio o dashboard
-              window.location.href = '../inicio/inicio.html';
+              window.location.href = '/inicio/inicio.html';
             } else {
               // Credenciales incorrectas, mostrar mensaje de error
               errorMessage.textContent = 'Credenciales inválidas. Por favor, intenta de nuevo.';

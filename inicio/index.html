@@ -17,7 +17,7 @@
                 <div id="error_message" style="color:red;"></div> <!-- Elemento para mostrar mensajes de error -->
                 <input type="submit" value="Iniciar Sesión">
             </form>
-            <button class="toggle-button" onclick="window.location='../admin/admin_login.html'">Iniciar Sesión de Administrador</button>
+            <button class="toggle-button" onclick="window.location='/inicio/admin_login.html'">Iniciar Sesión de Administrador</button>
         </div>
     </div>
     <script>
@@ -26,9 +26,9 @@
             const errorMessage = document.getElementById('error_message');
             
             const userRoutes = {
-                'user1': '../inicio_usuario/inicio_usuario.html',
-                'user2': '../inicio_usuario/dis1.html',
-                'user3': '../inicio_usuario/dis2.html'
+                'user1': '/inicio/inicio_usuario.html',
+                'user2': '/inicio/dis1.html',
+                'user3': '/inicio/dis2.html'
             };
 
             const userPasswords = {
