@@ -12,8 +12,7 @@
     <nav>
         <div class="nav-container">
             <ul class="nav-links">
-                <li><a href="inicio_usuario.html" >Dispositivo 1</a></li>
-                <li><a href="dis1.html">Dispositivo 2</a></li>
+                
                 <li><a href="dis2.html" class="active">Dispositivo 3</a></li>
             </ul>
             <a href="../Usuario/index.html" class="signout-button">Cerrar Sesión</a>
@@ -115,7 +114,7 @@
 }
 
         document.addEventListener('DOMContentLoaded', function () {
-            const token="BBTR-k1WxvFqMm9p0nXo2byFP2bza6qza2O"
+            const token="BBTR-qoD6fROAIsxsdzeenXXp0bdEEGqBCj"
             const device="nodo2"
             const urlVar1 = `http://industrial.api.ubidots.com/api/v1.6/devices/${device}/calidadaire/values?token=${token}`;
             const urlVar2 = `http://industrial.api.ubidots.com/api/v1.6/devices/${device}/concentracionco/values?token=${token}`;
