@@ -116,27 +116,79 @@ main.dashboard-container {
 .nav-links a.active {
     color: white; /* Color para resaltar la página actual */
 }
-
 /* Resto del código CSS */
 
-/* Estilos específicos para las tablas dentro de los contenedores */
-.table-container .table {
-    background-color: white;
-    border-collapse: collapse; /* Opcional: para asegurar que las celdas estén juntas */
-    overflow-y: scroll; /* Proporciona un desplazamiento vertical dentro del contenedor */
-    display: block; /* Permite el desplazamiento si la tabla es más ancha que el contenedor */
-    height: 200px; /* Altura fija para el desplazamiento vertical */
+/* Estilos generales para el contenedor de la fila y las tablas */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 20px; /* Añade espacio entre las tablas */
+    margin-bottom: 20px; /* Espacio debajo de la fila de tablas */
+}
+
+.table-container1,
+.table-container2,
+.table-container3,
+.table-container4 {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow-x: auto; /* Permite el desplazamiento horizontal si la tabla se desborda */
+    margin-bottom: 20px; /* Espacio debajo de cada contenedor de tabla */
+    max-height: 500px; /* Ajusta esto según la altura de 10 filas de tu tabla */
+    overflow-y: scroll;
+}
+
+.table {
+    width: 100%; /* Asegura que la tabla ocupe todo el ancho del contenedor */
+    margin-bottom: 0; /* Remueve el margen por defecto de las tablas */
+    border-collapse: collapse; /* Para que no haya espacios entre las celdas */
+}
+
+.table th,
+.table td {
+    text-align: left;
+    padding: 15px;
     
+
 }
 
-.table-container .table thead {
-    display: block; /* Mantiene los encabezados visibles al desplazar */
+.table thead {
+    background-color: #f7f7f7; /* Color de fondo para los encabezados de la tabla */
 }
 
-.table-container .table tbody {
-    display: block; /* Permite el desplazamiento del cuerpo de la tabla */
-    max-height: 200px; /* Altura máxima antes de que el desplazamiento vertical se active */
-    overflow-y: scroll; /* Proporciona el desplazamiento vertical */
+.table thead th {
+    position: sticky;
+    top: 0; /* Asegura que el encabezado se mantenga visible al desplazar */
+    z-index: 10;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: #f2f2f2; /* Color de fondo para las filas impares */
+}
+th {
+    background: #fff; /* O el color de fondo de tu elección */
+    position: sticky;
+    top: 0; /* Esto es necesario para que 'sticky' funcione */
+    z-index: 100; /* Asegúrate de que los encabezados se queden por encima del contenido al desplazarse */
+}
+
+/* Media queries para responsividad */
+@media (max-width: 800px) {
+    .row {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .table-container1,
+    .table-container2,
+    .table-container3,
+    .table-container4 {
+        width: 90%; /* Ancho ajustado para pantallas pequeñas */
+        overflow-x: auto;
+        overflow-y: auto;
+    }
 }
 
 
