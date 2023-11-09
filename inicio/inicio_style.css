@@ -222,4 +222,8 @@ th {
         margin-top: 20px; /* Espacio entre los contenedores en vista móvil */
     }
 }
+.grafica-container canvas {
+    width: 600px; /* Ancho deseado */
+    height: 400px; /* Alto deseado */
+}
 

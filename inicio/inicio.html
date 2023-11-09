@@ -146,45 +146,60 @@
 
     <script>
         const creamosLaGraficaDeLinea = (grafica, datos, titulo) => {
-            let values = [];
-            let labels = []
+    let values = [];
+    let labels = [];
 
-            for (let i = 0; i < datos.length; i++) {
-                values.push(datos[i].value)
-                labels.push(datos[i].timestamp.toLocaleString('es-CO', { timeZone: 'UTC' }))
-            }
+    for (let i = 0; i < datos.length; i++) {
+        values.push(datos[i].value)
+        labels.push(new Date(datos[i].timestamp).toLocaleString('es-CO', { timeZone: 'UTC' }))
+    }
 
-            const datosTabla = {
-                label: titulo,
-                data: values, // La data es un arreglo que debe tener la misma cantidad de valores que la cantidad de etiquetas
-                backgroundColor: 'rgba(219,142,137)', // Color de fondo
-                borderColor: 'rgba(140,132,156)', // Color del borde
-                borderWidth: 1,// Ancho del borde
-            };
+    const datosTabla = {
+        label: titulo,
+        data: values,
+        backgroundColor: 'rgba(219,142,137)',
+        borderColor: 'rgba(140,132,156)',
+        borderWidth: 1,
+    };
 
-            console.log(values)
-            console.log(labels)
+    console.log(values)
+    console.log(labels)
 
-            new Chart(grafica, {
-                type: 'line',// Tipo de gráfica
-                data: {
-                    labels: labels,
-                    datasets: [
-                        datosTabla,
-                        // Aquí más datos...
-                    ]
+    new Chart(grafica, {
+        type: 'line',
+        data: {
+            labels: labels,
+            datasets: [datosTabla]
+        },
+        options: {
+            scales: {
+                y: { // Cambiado de 'yAxes' a 'y' para la última versión de Chart.js
+                    beginAtZero: true,
+                    min: 0,
+                    max: 6000,
+                    ticks: {
+                        // Asegúrate de que las marcas de graduación comiencen en 0 y terminen en 6000
+                        stepSize: 1000 // Cambia este valor si quieres diferentes intervalos entre las marcas de graduación
+                    }
                 },
-                options: {
-                    scales: {
-                        yAxes: [{
-                            ticks: {
-                                beginAtZero: true
-                            }
-                        }],
+                x: { // Cambiado de 'xAxes' a 'x' para la última versión de Chart.js
+                    type: 'time',
+                    time: {
+                        tooltipFormat: 'll HH:mm',
+                        displayFormats: {
+                            quarter: 'MMM YYYY'
+                        }
                     },
+                    title: {
+                        display: true,
+                        text: 'Fecha'
+                    }
                 }
-            });
+            }
         }
+    });
+}
+
         document.addEventListener('DOMContentLoaded', function () {
             const urlVar1 = 'http://industrial.api.ubidots.com/api/v1.6/devices/nodo1/calidadaire/values?token=BBTR-k1WxvFqMm9p0nXo2byFP2bza6qza2O';
             const urlVar2 = 'http://industrial.api.ubidots.com/api/v1.6/devices/nodo1/concentracionco/values?token=BBTR-k1WxvFqMm9p0nXo2byFP2bza6qza2O';
@@ -248,7 +263,7 @@
 
                     datos.forEach(obj => {
                         var timestamp = obj.timestamp;
-                        var date = new Date(timestamp).toLocaleString('es-CO', { timeZone: 'UTC' });
+                        var date = new Date(timestamp).toLocaleString('es-CO', { timeZone: 'America/Bogota' });
 
                         const tr = document.createElement('tr');
                         tr.innerHTML =
@@ -271,7 +286,7 @@
 
                     datos.forEach(obj => {
                         var timestamp = obj.timestamp;
-                        var date = new Date(timestamp).toLocaleString('es-CO', { timeZone: 'UTC' });
+                        var date = new Date(timestamp).toLocaleString('es-CO', { timeZone: 'America/Bogota' });
 
                         const tr = document.createElement('tr');
                         tr.innerHTML =
@@ -293,7 +308,7 @@
 
                     datos.forEach(obj => {
                         var timestamp = obj.timestamp;
-                        var date = new Date(timestamp).toLocaleString('es-CO', { timeZone: 'UTC' });
+                        var date = new Date(timestamp).toLocaleString('es-CO', { timeZone: 'America/Bogota' });
 
                         const tr = document.createElement('tr');
                         tr.innerHTML =
@@ -314,7 +329,7 @@
                     creamosLaGraficaDeLinea(document.getElementById('graftemperatura'), datosGrafica, 'temperatura');
                     datos.forEach(obj => {
                         var timestamp = obj.timestamp;
-                        var date = new Date(timestamp).toLocaleString('es-CO', { timeZone: 'UTC' });
+                        var date = new Date(timestamp).toLocaleString('es-CO', { timeZone: 'America/Bogota' });
 
                         const tr = document.createElement('tr');
                         tr.innerHTML =
