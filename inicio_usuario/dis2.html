@@ -78,8 +78,6 @@
         borderWidth: 1,
     };
 
-    console.log(values)
-    console.log(labels)
 
     new Chart(grafica, {
         type: 'line',
@@ -117,11 +115,12 @@
 }
 
         document.addEventListener('DOMContentLoaded', function () {
-            const urlVar1 = 'http://industrial.api.ubidots.com/api/v1.6/devices/nodo1/calidadaire/values?token=BBTR-k1WxvFqMm9p0nXo2byFP2bza6qza2O';
-            const urlVar2 = 'http://industrial.api.ubidots.com/api/v1.6/devices/nodo1/concentracionco/values?token=BBTR-k1WxvFqMm9p0nXo2byFP2bza6qza2O';
-            const urlVar3 = 'http://industrial.api.ubidots.com/api/v1.6/devices/nodo1/humedad/values?token=BBTR-k1WxvFqMm9p0nXo2byFP2bza6qza2O';
-            const urlVar4 = 'http://industrial.api.ubidots.com/api/v1.6/devices/nodo1/temperatura/values?token=BBTR-k1WxvFqMm9p0nXo2byFP2bza6qza2O';
-
+            const token="BBTR-k1WxvFqMm9p0nXo2byFP2bza6qza2O"
+            const device="nodo2"
+            const urlVar1 = `http://industrial.api.ubidots.com/api/v1.6/devices/${device}/calidadaire/values?token=${token}`;
+            const urlVar2 = `http://industrial.api.ubidots.com/api/v1.6/devices/${device}/concentracionco/values?token=${token}`;
+            const urlVar3 = `http://industrial.api.ubidots.com/api/v1.6/devices/${device}/humedad/values?token=${token}`;
+            const urlVar4 = `http://industrial.api.ubidots.com/api/v1.6/devices/${device}/temperatura/values?token=${token}`;
             function updateCard(containerId, title, value) {
                 const cardContainer = document.querySelector(containerId);
                 let card = cardContainer.querySelector('.card');

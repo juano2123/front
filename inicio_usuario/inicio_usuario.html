@@ -78,8 +78,6 @@
         borderWidth: 1,
     };
 
-    console.log(values)
-    console.log(labels)
 
     new Chart(grafica, {
         type: 'line',
@@ -170,95 +168,95 @@
                     .catch(error => console.error('Error al obtener datos de concentración de CO:', error));
 
 
-                ///parte d
+                // ///parte d
 
-                fetch(urlVar1).then(response => response.json()).then(data => {
-                    const tbody = document.querySelector('#var1 tbody');
-                    const datos = data.results;
-                    const datosGrafica = data.results.map(item => ({ value: item.value, timestamp: item.timestamp }));
-                    creamosLaGraficaDeLinea(document.getElementById('graficaCalidadAire'), datosGrafica, 'Calidad del Aire');
+                // fetch(urlVar1).then(response => response.json()).then(data => {
+                //     const tbody = document.querySelector('#var1 tbody');
+                //     const datos = data.results;
+                //     const datosGrafica = data.results.map(item => ({ value: item.value, timestamp: item.timestamp }));
+                //     creamosLaGraficaDeLinea(document.getElementById('graficaCalidadAire'), datosGrafica, 'Calidad del Aire');
 
-                    datos.forEach(obj => {
-                        var timestamp = obj.timestamp;
-                        var date = new Date(timestamp).toLocaleString('es-CO', { timeZone: 'America/Bogota' });
+                //     datos.forEach(obj => {
+                //         var timestamp = obj.timestamp;
+                //         var date = new Date(timestamp).toLocaleString('es-CO', { timeZone: 'America/Bogota' });
 
-                        const tr = document.createElement('tr');
-                        tr.innerHTML =
-                            `<td>${obj.value}</td><td>0</td><td>${date}</td>`;
+                //         const tr = document.createElement('tr');
+                //         tr.innerHTML =
+                //             `<td>${obj.value}</td><td>0</td><td>${date}</td>`;
 
-                        tbody.appendChild(tr);
-                    });
+                //         tbody.appendChild(tr);
+                //     });
 
-                    const $grafica = document.querySelector("#grafcalidadaire");
+                //     const $grafica = document.querySelector("#grafcalidadaire");
 
-                    //creamosLaGraficaDeLinea($grafica, datos, "sonido")
+                //     //creamosLaGraficaDeLinea($grafica, datos, "sonido")
 
-                }).catch(error => console.error(error));
+                // }).catch(error => console.error(error));
 
-                fetch(urlVar2).then(response => response.json()).then(data => {
-                    const tbody = document.querySelector('#var2 tbody');
-                    const datos = data.results;
-                    const datosGrafica = data.results.map(item => ({ value: item.value, timestamp: item.timestamp }));
-                    creamosLaGraficaDeLinea(document.getElementById('graficaConcentracionCO'), datosGrafica, 'Concentración CO');
+                // fetch(urlVar2).then(response => response.json()).then(data => {
+                //     const tbody = document.querySelector('#var2 tbody');
+                //     const datos = data.results;
+                //     const datosGrafica = data.results.map(item => ({ value: item.value, timestamp: item.timestamp }));
+                //     creamosLaGraficaDeLinea(document.getElementById('graficaConcentracionCO'), datosGrafica, 'Concentración CO');
 
-                    datos.forEach(obj => {
-                        var timestamp = obj.timestamp;
-                        var date = new Date(timestamp).toLocaleString('es-CO', { timeZone: 'America/Bogota' });
+                //     datos.forEach(obj => {
+                //         var timestamp = obj.timestamp;
+                //         var date = new Date(timestamp).toLocaleString('es-CO', { timeZone: 'America/Bogota' });
 
-                        const tr = document.createElement('tr');
-                        tr.innerHTML =
-                            `<td>${obj.value}</td><td>0</td><td>${date}</td>`;
+                //         const tr = document.createElement('tr');
+                //         tr.innerHTML =
+                //             `<td>${obj.value}</td><td>0</td><td>${date}</td>`;
 
-                        tbody.appendChild(tr);
-                    });
+                //         tbody.appendChild(tr);
+                //     });
 
-                    const $grafica = document.querySelector("#co");
-                    //creamosLaGraficaDeLinea($grafica, datos, "co")
+                //     const $grafica = document.querySelector("#co");
+                //     //creamosLaGraficaDeLinea($grafica, datos, "co")
 
-                }).catch(error => console.error(error));
+                // }).catch(error => console.error(error));
 
-                fetch(urlVar3).then(response => response.json()).then(data => {
-                    const tbody = document.querySelector('#var3 tbody');
-                    const datos = data.results;
-                    const datosGrafica = data.results.map(item => ({ value: item.value, timestamp: item.timestamp }));
-                    creamosLaGraficaDeLinea(document.getElementById('graficahumedad'), datosGrafica, 'humedad');
+                // fetch(urlVar3).then(response => response.json()).then(data => {
+                //     const tbody = document.querySelector('#var3 tbody');
+                //     const datos = data.results;
+                //     const datosGrafica = data.results.map(item => ({ value: item.value, timestamp: item.timestamp }));
+                //     creamosLaGraficaDeLinea(document.getElementById('graficahumedad'), datosGrafica, 'humedad');
 
-                    datos.forEach(obj => {
-                        var timestamp = obj.timestamp;
-                        var date = new Date(timestamp).toLocaleString('es-CO', { timeZone: 'America/Bogota' });
+                //     datos.forEach(obj => {
+                //         var timestamp = obj.timestamp;
+                //         var date = new Date(timestamp).toLocaleString('es-CO', { timeZone: 'America/Bogota' });
 
-                        const tr = document.createElement('tr');
-                        tr.innerHTML =
-                            `<td>${obj.value}</td><td>0</td><td>${date}</td>`;
+                //         const tr = document.createElement('tr');
+                //         tr.innerHTML =
+                //             `<td>${obj.value}</td><td>0</td><td>${date}</td>`;
 
-                        tbody.appendChild(tr);
-                    });
+                //         tbody.appendChild(tr);
+                //     });
 
-                    const $grafica = document.querySelector("#humedad");
-                    //creamosLaGraficaDeLinea($grafica, datos, "co")
+                //     const $grafica = document.querySelector("#humedad");
+                //     //creamosLaGraficaDeLinea($grafica, datos, "co")
 
-                }).catch(error => console.error(error));
+                // }).catch(error => console.error(error));
 
-                fetch(urlVar4).then(response => response.json()).then(data => {
-                    const tbody = document.querySelector('#var4 tbody');
-                    const datos = data.results;
-                    const datosGrafica = data.results.map(item => ({ value: item.value, timestamp: item.timestamp }));
-                    creamosLaGraficaDeLinea(document.getElementById('graftemperatura'), datosGrafica, 'temperatura');
-                    datos.forEach(obj => {
-                        var timestamp = obj.timestamp;
-                        var date = new Date(timestamp).toLocaleString('es-CO', { timeZone: 'America/Bogota' });
+                // fetch(urlVar4).then(response => response.json()).then(data => {
+                //     const tbody = document.querySelector('#var4 tbody');
+                //     const datos = data.results;
+                //     const datosGrafica = data.results.map(item => ({ value: item.value, timestamp: item.timestamp }));
+                //     creamosLaGraficaDeLinea(document.getElementById('graftemperatura'), datosGrafica, 'temperatura');
+                //     datos.forEach(obj => {
+                //         var timestamp = obj.timestamp;
+                //         var date = new Date(timestamp).toLocaleString('es-CO', { timeZone: 'America/Bogota' });
 
-                        const tr = document.createElement('tr');
-                        tr.innerHTML =
-                            `<td>${obj.value}</td><td>0</td><td>${date}</td>`;
+                //         const tr = document.createElement('tr');
+                //         tr.innerHTML =
+                //             `<td>${obj.value}</td><td>0</td><td>${date}</td>`;
 
-                        tbody.appendChild(tr);
-                    });
+                //         tbody.appendChild(tr);
+                //     });
 
-                    const $grafica = document.querySelector("#temp");
-                    //creamosLaGraficaDeLinea($grafica, datos, "co")
+                //     const $grafica = document.querySelector("#temp");
+                //     //creamosLaGraficaDeLinea($grafica, datos, "co")
 
-                }).catch(error => console.error(error));
+                // }).catch(error => console.error(error));
 
             }
 

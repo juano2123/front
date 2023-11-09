@@ -12,38 +12,44 @@
         <div class="login-container">
             <h2>Iniciar Sesión de Usuario</h2>
             <form id="loginForm">
-                <input type="text" id="admin_username" placeholder="Nombre de administrador" required>
+                <input type="text" id="admin_username" placeholder="Nombre de usuario" required>
                 <input type="password" id="admin_password" placeholder="Contraseña" required>
+                <div id="error_message" style="color:red;"></div> <!-- Elemento para mostrar mensajes de error -->
                 <input type="submit" value="Iniciar Sesión">
-              </form>
+            </form>
             <button class="toggle-button" onclick="window.location='../admin/admin_login.html'">Iniciar Sesión de Administrador</button>
         </div>
     </div>
     <script>
-        document.addEventListener('DOMContentLoaded', (event) => {
-          const form = document.getElementById('loginForm');
-          const errorMessage = document.getElementById('error_message');
-    
-          form.addEventListener('submit', (e) => {
-            e.preventDefault();
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.getElementById('loginForm');
+            const errorMessage = document.getElementById('error_message');
             
-            const adminUsername = document.getElementById('admin_username').value;
-            const adminPassword = document.getElementById('admin_password').value;
-    
-            // Credenciales hardcodeadas para el ejemplo
-            const hardcodedUsername = 'user';
-            const hardcodedPassword = 'user123';
-    
-            if(adminUsername === hardcodedUsername && adminPassword === hardcodedPassword) {
-              // Credenciales correctas
-              // Aquí deberías redirigir al usuario a la página de inicio o dashboard
-              window.location.href = '../inicio_usuario/inicio_usuario.html';
-            } else {
-              // Credenciales incorrectas, mostrar mensaje de error
-              errorMessage.textContent = 'Credenciales inválidas. Por favor, intenta de nuevo.';
-            }
-          });
+            const userRoutes = {
+                'user1': '../inicio_usuario/inicio_usuario.html',
+                'user2': '../inicio_usuario/dis1.html',
+                'user3': '../inicio_usuario/dis2.html'
+            };
+
+            const userPasswords = {
+                'user1': 'pass1',
+                'user2': 'pass2',
+                'user3': 'pass3'
+            };
+
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                const username = document.getElementById('admin_username').value;
+                const password = document.getElementById('admin_password').value;
+                
+                if(userPasswords[username] && password === userPasswords[username]) {
+                    window.location.href = userRoutes[username];
+                } else {
+                    errorMessage.textContent = 'Credenciales inválidas. Por favor, intenta de nuevo.';
+                }
+            });
         });
-      </script>
+    </script>
 </body>
 </html>
