@@ -5,17 +5,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard de Calidad del Aire</title>
-    <link rel="stylesheet" href="inicio_u_styles.css">
+    <link rel="stylesheet" href="inicio_style.css">
 </head>
 
 <body>
     <nav>
         <div class="nav-container">
             <ul class="nav-links">
-                
-                <li><a href="dis2.html" class="active">Dispositivo 3</a></li>
+                <li><a href="inicio.html" class="active">Dispositivo 1</a></li>
+                <li><a href="dispositivo1.html">Dispositivo 2</a></li>
+                <li><a href="dispositivo2.html" >Dispositivo 3</a></li>
             </ul>
-            <a href="/inicio/index.html" class="signout-button">Cerrar Sesión</a>
+            <a href="admin_login.html" class="signout-button">Cerrar Sesión</a>
         </div>
     </nav>
     <header>
@@ -41,6 +42,90 @@
             <!-- ... -->
         </div>
         <div class="nombre-datos">
+        <h2>DATOS CAPTURADOS</h2>
+         </div>
+        <div class="row text-center">
+            <!-- Contenedor de la tabla de calidad del aire -->
+            <div class="table-container1">
+                <table id="var1" class="table table-success table-striped w-100">
+                    <thead>
+                        <tr>
+                            <th scope="col">Calidad del Aire</th>
+                            <th scope="col">Contexto</th>
+                            <th scope="col">Fecha</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Los datos se insertarán aquí -->
+                    </tbody>
+                </table>
+            </div>
+        
+            <!-- Contenedor de la tabla de concentración de CO -->
+            <div class="table-container2">
+                <table id="var2" class="table table-success table-striped w-100">
+                    <thead>
+                        <tr>
+                            <th scope="col">Concentración CO</th>
+                            <th scope="col">Contexto</th>
+                            <th scope="col">Fecha</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Los datos se insertarán aquí -->
+                    </tbody>
+                </table>
+            </div>
+        
+            <!-- Contenedor de la tabla de humedad -->
+            <div class="table-container3">
+                <table id="var3" class="table table-success table-striped w-100">
+                    <thead>
+                        <tr>
+                            <th scope="col">Humedad</th>
+                            <th scope="col">Contexto</th>
+                            <th scope="col">Fecha</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Los datos se insertarán aquí -->
+                    </tbody>
+                </table>
+            </div>
+        
+            <!-- Contenedor de la tabla de temperatura -->
+            <div class="table-container4">
+                <table id="var4" class="table table-success table-striped w-100">
+                    <thead>
+                        <tr>
+                            <th scope="col">Temperatura</th>
+                            <th scope="col">Contexto</th>
+                            <th scope="col">Fecha</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Los datos se insertarán aquí -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="grafica-container">
+            <h3>Gráfica de Calidad del Aire</h3>
+            <canvas id="graficaCalidadAire"></canvas>
+        </div>
+        <div class="grafica-container">
+            <h3>Gráfica de Concentración CO</h3>
+            <canvas id="graficaConcentracionCO"></canvas>
+        </div>
+        <div class="grafica-container">
+            <h3>Gráfica de humedad</h3>
+            <canvas id="graficahumedad"></canvas>
+        </div>
+        <div class="grafica-container">
+            <h3>Gráfica de temperatura </h3>
+            <canvas id="graftemperatura"></canvas>
+        </div>
         
     </main>
     
@@ -77,7 +162,7 @@
         borderWidth: 1,
     };
 
-
+ 
     new Chart(grafica, {
         type: 'line',
         data: {
@@ -115,7 +200,7 @@
 
         document.addEventListener('DOMContentLoaded', function () {
             const token="BBTR-qoD6fROAIsxsdzeenXXp0bdEEGqBCj"
-            const device="nodo2"
+            const device="nodo1"
             const urlVar1 = `http://industrial.api.ubidots.com/api/v1.6/devices/${device}/calidadaire/values?token=${token}`;
             const urlVar2 = `http://industrial.api.ubidots.com/api/v1.6/devices/${device}/concentracionco/values?token=${token}`;
             const urlVar3 = `http://industrial.api.ubidots.com/api/v1.6/devices/${device}/humedad/values?token=${token}`;
