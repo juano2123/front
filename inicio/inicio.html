@@ -109,25 +109,26 @@
                 </table>
             </div>
         </div>
-        
+
+        <div class="grafica-container">
+            <h3>Gráfica de Calidad del Aire</h3>
+            <canvas id="graficaCalidadAire"></canvas>
+        </div>
+        <div class="grafica-container">
+            <h3>Gráfica de Concentración CO</h3>
+            <canvas id="graficaConcentracionCO"></canvas>
+        </div>
+        <div class="grafica-container">
+            <h3>Gráfica de humedad</h3>
+            <canvas id="graficahumedad"></canvas>
+        </div>
+        <div class="grafica-container">
+            <h3>Gráfica de temperatura </h3>
+            <canvas id="graftemperatura"></canvas>
+        </div>
         
     </main>
-    <div class="grafica-container">
-        <h3>Gráfica de Calidad del Aire</h3>
-        <canvas id="graficaCalidadAire"></canvas>
-    </div>
-    <div class="grafica-container">
-        <h3>Gráfica de Concentración CO</h3>
-        <canvas id="graficaConcentracionCO"></canvas>
-    </div>
-    <div class="grafica-container">
-        <h3>Gráfica de Concentración CO</h3>
-        <canvas id="graficahumedad"></canvas>
-    </div>
-    <div class="grafica-container">
-        <h3>Gráfica de Concentración CO</h3>
-        <canvas id="graftemperatura"></canvas>
-    </div>
+    
     <!-- ... -->
     <!-- Incluye las bibliotecas de JavaScript necesarias aquí -->
     <!-- ... -->
@@ -242,6 +243,8 @@
                 fetch(urlVar1).then(response => response.json()).then(data => {
                     const tbody = document.querySelector('#var1 tbody');
                     const datos = data.results;
+                    const datosGrafica = data.results.map(item => ({ value: item.value, timestamp: item.timestamp }));
+                    creamosLaGraficaDeLinea(document.getElementById('graficaCalidadAire'), datosGrafica, 'Calidad del Aire');
 
                     datos.forEach(obj => {
                         var timestamp = obj.timestamp;
@@ -263,6 +266,8 @@
                 fetch(urlVar2).then(response => response.json()).then(data => {
                     const tbody = document.querySelector('#var2 tbody');
                     const datos = data.results;
+                    const datosGrafica = data.results.map(item => ({ value: item.value, timestamp: item.timestamp }));
+                    creamosLaGraficaDeLinea(document.getElementById('graficaConcentracionCO'), datosGrafica, 'Concentración CO');
 
                     datos.forEach(obj => {
                         var timestamp = obj.timestamp;
@@ -283,6 +288,9 @@
                 fetch(urlVar3).then(response => response.json()).then(data => {
                     const tbody = document.querySelector('#var3 tbody');
                     const datos = data.results;
+                    const datosGrafica = data.results.map(item => ({ value: item.value, timestamp: item.timestamp }));
+                    creamosLaGraficaDeLinea(document.getElementById('graficahumedad'), datosGrafica, 'humedad');
+
                     datos.forEach(obj => {
                         var timestamp = obj.timestamp;
                         var date = new Date(timestamp).toLocaleString('es-CO', { timeZone: 'UTC' });
@@ -302,6 +310,8 @@
                 fetch(urlVar4).then(response => response.json()).then(data => {
                     const tbody = document.querySelector('#var4 tbody');
                     const datos = data.results;
+                    const datosGrafica = data.results.map(item => ({ value: item.value, timestamp: item.timestamp }));
+                    creamosLaGraficaDeLinea(document.getElementById('graftemperatura'), datosGrafica, 'temperatura');
                     datos.forEach(obj => {
                         var timestamp = obj.timestamp;
                         var date = new Date(timestamp).toLocaleString('es-CO', { timeZone: 'UTC' });
