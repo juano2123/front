@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard del Dispositivo 1</title>
+    <title>Dashboard del Dispositivo 2</title>
     <link rel="stylesheet" href="inicio_style.css">
 </head>
 <body>
@@ -11,42 +11,134 @@
         <div class="nav-container">
             <ul class="nav-links">
                 <li><a href="inicio.html" >Dispositivo 1</a></li>
-                <li><a href="dispositivo1.html"class="active">Dispositivo 2</a></li>
-                <li><a href="dispositivo2.html" >Dispositivo 3</a></li>
+                <li><a href="dispositivo1.html">Dispositivo 2</a></li>
+                <li><a href="dispositivo2.html" class="active">Dispositivo 3</a></li>
             </ul>
             <a href="../Usuario/index.html" class="signout-button">Cerrar Sesión</a>
         </div>
     </nav>
     <header>
-        <h1>Dashboard de Monitoreo Ambiental 2</h1>
+        <h1>Dashboard de Monitoreo Ambiental 3</h1>
     </header>
-    <main class="dashboard-container">
-        <div class="data-container">
-            <div class="data-box">
-                <h3>Calidad del Aire</h3>
-                <p id="air-quality">--</p>
-            </div>
-            <div class="data-box">
-                <h3>Temperatura</h3>
-                <p id="temperature">-- °C</p>
-            </div>
-            <div class="data-box">
-                <h3>Humedad</h3>
-                <p id="humidity">-- %</p>
-            </div>
-            <div class="data-box">
-                <h3>Monóxido de Carbono</h3>
-                <p id="carbon-monoxide">-- ppm</p>
-            </div>
+    <div class="data-container">
+        <div id="card1" class="data-box">
+            <!-- El contenido de la tarjeta de calidad del aire se generará y se insertará mediante JavaScript -->
         </div>
-        <div class="alerts-container">
-            <h3>Alertas</h3>
-            <p id="alerts-count">0</p>
+        <div id="card2" class="data-box">
+            <!-- El contenido de la tarjeta de concentración de CO se generará y se insertará mediante JavaScript -->
         </div>
+        <div id="card3" class="data-box">
+            <!-- El contenido de la tarjeta de humedad se generará y se insertará mediante JavaScript -->
+        </div>
+        <div id="card4" class="data-box">
+            <!-- El contenido de la tarjeta de humedad se generará y se insertará mediante JavaScript -->
+        </div>
+        <!-- Resto de las cajas de datos -->
+        <!-- ... -->
+    </div>
     </main>
 
+
     <script>
-        // Aquí iría el JavaScript para actualizar los valores con datos reales del Dispositivo 1
+        const creamosLaGraficaDeLinea = (grafica, datos, titulo) => {
+            let values = [];
+            let labels = []
+
+            for (let i = 0; i < datos.length; i++) {
+                values.push(datos[i].value)
+                labels.push(datos[i].timestamp.toLocaleString('es-CO', { timeZone: 'UTC' }))
+            }
+
+            const datosTabla = {
+                label: titulo,
+                data: values, // La data es un arreglo que debe tener la misma cantidad de valores que la cantidad de etiquetas
+                backgroundColor: 'rgba(219,142,137)', // Color de fondo
+                borderColor: 'rgba(140,132,156)', // Color del borde
+                borderWidth: 1,// Ancho del borde
+            };
+
+            console.log(values)
+            console.log(labels)
+
+            new Chart(grafica, {
+                type: 'line',// Tipo de gráfica
+                data: {
+                    labels: labels,
+                    datasets: [
+                        datosTabla,
+                        // Aquí más datos...
+                    ]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }],
+                    },
+                }
+            });
+        }
+        document.addEventListener('DOMContentLoaded', function () {
+            const urlVar1 = 'http://industrial.api.ubidots.com/api/v1.6/devices/nodo1/calidadaire/values?token=BBTR-k1WxvFqMm9p0nXo2byFP2bza6qza2O';
+            const urlVar2 = 'http://industrial.api.ubidots.com/api/v1.6/devices/nodo1/concentracionco/values?token=BBTR-k1WxvFqMm9p0nXo2byFP2bza6qza2O';
+            const urlVar3 = 'http://industrial.api.ubidots.com/api/v1.6/devices/nodo1/humedad/values?token=BBTR-k1WxvFqMm9p0nXo2byFP2bza6qza2O';
+            const urlVar4 = 'http://industrial.api.ubidots.com/api/v1.6/devices/nodo1/temperatura/values?token=BBTR-k1WxvFqMm9p0nXo2byFP2bza6qza2O';
+
+            function updateCard(containerId, title, value) {
+                const cardContainer = document.querySelector(containerId);
+                let card = cardContainer.querySelector('.card');
+                if (!card) {
+                    card = document.createElement('div');
+                    card.setAttribute("class", "card text-center");
+                    cardContainer.appendChild(card);
+                }
+                card.innerHTML = `
+            <div class="card-body">
+              <h5 class="card-title">${title}</h5>
+              <h1 class="card-title">${value}</h1>
+            </div>
+          `;
+            }
+
+            function fetchDataAndUpdate() {
+                fetch(urlVar1)
+                    .then(response => response.json())
+                    .then(data => {
+
+                        updateCard('#card1', 'Calidad del Aire', data.results[0].value);
+                    })
+                    .catch(error => console.error('Error al obtener datos de calidad del aire:', error));
+
+                fetch(urlVar2)
+                    .then(response => response.json())
+                    .then(data => {
+
+                        updateCard('#card2', 'Concentración de CO', data.results[0].value);
+                    })
+                    .catch(error => console.error('Error al obtener datos de concentración de CO:', error));
+
+                fetch(urlVar3)
+                    .then(response => response.json())
+                    .then(data => {
+                        updateCard('#card3', 'Humedad', data.results[0].value);
+                    })
+                    .catch(error => console.error('Error al obtener datos de concentración de CO:', error));
+                fetch(urlVar4)
+                    .then(response => response.json())
+                    .then(data => {
+                        updateCard('#card4', 'Temperatura', data.results[0].value);
+                    })
+                    .catch(error => console.error('Error al obtener datos de concentración de CO:', error));
+
+            }
+
+
+            fetchDataAndUpdate();
+            setInterval(fetchDataAndUpdate, 5000);
+        });
     </script>
 </body>
 </html>
+
