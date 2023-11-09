@@ -44,7 +44,7 @@ header {
 }
 
 header h1 {
-    color: #333;
+    color: black;
     font-size: 2rem;
     margin-bottom: 20px;
 }
@@ -117,6 +117,13 @@ main.dashboard-container {
     color: white; /* Color para resaltar la página actual */
 }
 /* Resto del código CSS */
+table-container .table {
+    background-color: white;
+    border-collapse: collapse; /* Opcional: para asegurar que las celdas estén juntas */
+    overflow-y: scroll; /* Proporciona un desplazamiento vertical dentro del contenedor */
+    display: block; /* Permite el desplazamiento si la tabla es más ancha que el contenedor */
+    height: 200px; /* Altura fija para el desplazamiento vertical */
+}
 
 /* Estilos generales para el contenedor de la fila y las tablas */
 .row {
@@ -191,6 +198,12 @@ th {
     }
 }
 
+.nombre-datos{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    padding: 10px;
+}
 
 @media (max-width: 800px) {
     .dashboard-container {
