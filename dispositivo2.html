@@ -188,10 +188,10 @@
     document.addEventListener('DOMContentLoaded', function () {
         const token = "BBTR-ynfElG1Ap3Ydmj8jF9f028A0tdV418"
         const device = "nodo3"
-        const urlVar1 = `http://industrial.api.ubidots.com/api/v1.6/devices/${device}/concentracionco/values?token=${token}`;
-        const urlVar2 = `http://industrial.api.ubidots.com/api/v1.6/devices/${device}/temperatura/values?token=${token}`;
-        const urlVar3 = `http://industrial.api.ubidots.com/api/v1.6/devices/${device}/new-variable-1/values?token=${token}`;
-        const urlVar4 = `http://industrial.api.ubidots.com/api/v1.6/devices/${device}/alertatemp/values?token=${token}`;
+        const urlVar1 = `https://industrial.api.ubidots.com/api/v1.6/devices/${device}/concentracionco/values?token=${token}`;
+        const urlVar2 = `https://industrial.api.ubidots.com/api/v1.6/devices/${device}/temperatura/values?token=${token}`;
+        const urlVar3 = `https://industrial.api.ubidots.com/api/v1.6/devices/${device}/new-variable-1/values?token=${token}`;
+        const urlVar4 = `https://industrial.api.ubidots.com/api/v1.6/devices/${device}/alertatemp/values?token=${token}`;
         console.log(urlVar3)
 
         let cantidadEnviosVar3 = 0;
@@ -230,11 +230,11 @@
                 })
                 .catch(error => console.error('Error al obtener datos de temperatura:', error));
 
-            fetch(urlVar4)
+            fetch(urlVar3)
                 .then(response => response.json())
                 .then(data => {
 
-                    updateCard('#card3', 'advertencias por temperatura altas', data.results.length, '',);
+                    updateCard('#card3', 'advertencias por Co', data.results.length, '',);
 
 
                 })
@@ -246,7 +246,7 @@
                     // Sumar el valor obtenido
                     const num = data.results.length
                     // Actualizar la card con el nuevo valor y mostrar la cantidad de veces
-                    updateCard('#card4', 'advertencias por Co ', num, '');
+                    updateCard('#card4', ' advertencias por temperatura altas', num, '');
                 })
                 .catch(error => console.error('Error al obtener datos de concentración de CO:', error));
 

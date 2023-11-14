@@ -71,7 +71,7 @@
                 <table id="var2" class="table table-success table-striped w-100">
                     <thead>
                         <tr>
-                            <th scope="col">Concentración CO</th>
+                            <th scope="col">temperatura</th>
                             <th scope="col">Contexto</th>
                             <th scope="col">Fecha</th>
                         </tr>
@@ -180,12 +180,12 @@
         let cantidadEnviosVar3 = 0;
         let cantidadEnviosVar4 = 0;
         document.addEventListener('DOMContentLoaded', function () {
-            const token = "BBTR-Hb40HMrF6wtabPB8Wd3lj2Y2uyOvJy"
+            const token = "BBUS-GCxx0SCiz17E5YfkW7pfc9OmwWozJR"
             const device = "nodo2"
-            const urlVar1 = `http://industrial.api.ubidots.com/api/v1.6/devices/${device}/concentracionco/values?token=${token}`;
-            const urlVar2 = `http://industrial.api.ubidots.com/api/v1.6/devices/${device}/temperatura/values?token=${token}`;
-            const urlVar3 = `http://industrial.api.ubidots.com/api/v1.6/devices/${device}/new-variable-1/values?token=${token}`;
-            const urlVar4 = `http://industrial.api.ubidots.com/api/v1.6/devices/${device}/alertatemp/values?token=${token}`;
+            const urlVar1 = `https://industrial.api.ubidots.com/api/v1.6/devices/${device}/concentracionco/values?token=${token}`;
+            const urlVar2 = `https://industrial.api.ubidots.com/api/v1.6/devices/${device}/temperatura/values?token=${token}`;
+            const urlVar3 = `https://industrial.api.ubidots.com/api/v1.6/devices/${device}/new-variable-1/values?token=${token}`;
+            const urlVar4 = `https://industrial.api.ubidots.com/api/v1.6/devices/${device}/alertatemp/values?token=${token}`;
             
 
             function updateCard(containerId, title, value, uni) {
@@ -221,32 +221,22 @@
                     .catch(error => console.error('Error al obtener datos de temperatura:', error));
 
                     fetch(urlVar3)
-    .then(response => response.json())
-    .then(data => {
-        // Verificar si el nuevo valor es mayor que el anterior
-        if (data.results[0].value > datosAntiguosVar3) {
-            // Calcular la cantidad de datos nuevos
-            const datosNuevosVar3 = data.results[0].value - datosAntiguosVar3;
+                .then(response => response.json())
+                .then(data => {
 
-            // Actualizar la card y mostrar la cantidad de veces solo si hay datos nuevos
-            if (datosNuevosVar3 > 0) {
-                updateCard('#card3', 'usted tiene', data.results[0].value, '', datosNuevosVar3);
-            }
+                    updateCard('#card3', 'advertencias por temperatura altas', data.results.length, '',);
 
-            // Actualizar los datos antiguos
-            datosAntiguosVar3 = data.results[0].value;
-        }
-    })
-    .catch(error => console.error('Error al obtener datos de concentración de CO:', error));
 
+                })
+                .catch(error => console.error('Error al obtener datos de concentración de CO:', error));
 
             fetch(urlVar4)
                 .then(response => response.json())
                 .then(data => {
                     // Sumar el valor obtenido
-                    const valorSumado1 = cantidadEnviosVar4 + data.results[0].value;
+                    const num = data.results.length
                     // Actualizar la card con el nuevo valor y mostrar la cantidad de veces
-                    updateCard('#card4', 'Temperatura', valorSumado1, '', ++cantidadEnviosVar4);
+                    updateCard('#card4', 'advertencias por Co ', num, '');
                 })
                 .catch(error => console.error('Error al obtener datos de concentración de CO:', error));
 
