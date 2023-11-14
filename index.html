@@ -1,55 +1,35 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iniciar Sesión de Usuario</title>
-    <link rel="stylesheet" href="index.css">
+    <title>Inicio - Monitoreo Ambiental</title>
+    <link rel="stylesheet" href="inicio_style.css">
 </head>
+
 <body>
-    <div class="content-wrapper">
-        <img src="imagen.png" alt="Árboles con aire limpio" class="login-image">
-        <div class="login-container">
-            <h2>Iniciar Sesión de Usuario</h2>
-            <form id="loginForm">
-                <input type="text" id="admin_username" placeholder="Nombre de usuario" required>
-                <input type="password" id="admin_password" placeholder="Contraseña" required>
-                <div id="error_message" style="color:red;"></div> <!-- Elemento para mostrar mensajes de error -->
-                <input type="submit" value="Iniciar Sesión">
-            </form>
-            <button class="toggle-button" onclick="window.location='admin_login.html'">Iniciar Sesión de Administrador</button>
+    <nav>
+        <div class="nav-container">
+            <ul class="nav-links">
+                <li><a href="index.html" class="active" >inicio</a></li>
+                <li><a href="inicio.html">Dispositivo 1</a></li>
+                <li><a href="dispositivo1.html">Dispositivo 2</a></li>
+                <li><a href="dispositivo2.html">Dispositivo 3</a></li>
+            </ul>
         </div>
-    </div>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const form = document.getElementById('loginForm');
-            const errorMessage = document.getElementById('error_message');
-            
-            const userRoutes = {
-                'user1': 'inicio_usuario.html',
-                'user2': 'dis1.html',
-                'user3': 'dis2.html'
-            };
-
-            const userPasswords = {
-                'user1': 'pass1',
-                'user2': 'pass2',
-                'user3': 'pass3'
-            };
-
-            form.addEventListener('submit', (e) => {
-                e.preventDefault();
-                
-                const username = document.getElementById('admin_username').value;
-                const password = document.getElementById('admin_password').value;
-                
-                if(userPasswords[username] && password === userPasswords[username]) {
-                    window.location.href = userRoutes[username];
-                } else {
-                    errorMessage.textContent = 'Credenciales inválidas. Por favor, intenta de nuevo.';
-                }
-            });
-        });
-    </script>
+    </nav>
+    <header>
+        <h1>Bienvenido al Monitoreo Ambiental</h1>
+        <p>La Navidad, época de alegría y celebración, conlleva un aumento del riesgo de incendios en hogares. Según la Federación Española de Prevención de Incendios (FEPC), durante esta temporada los incendios pueden aumentar hasta en un 25% en comparación con otros meses. Las principales causas son la decoración lumínica, el uso de velas y las chimeneas. Este problema puede resultar en daños materiales, lesiones e incluso la pérdida de vidas.</p>
+        <p>Una solución efectiva para mitigar este riesgo es la instalación de un dispositivo que detecte monóxido de carbono y la temperatura ambiente. Este dispositivo constaría de un sensor de monóxido de carbono, un sensor de temperatura y un módulo de comunicación. Colocado estratégicamente en áreas centrales del hogar, como la sala de estar, estaría conectado a la red eléctrica y al sistema de alarma.</p>
+        <p>En caso de detectar niveles elevados de monóxido de carbono o temperatura, el dispositivo enviaría una alerta a las autoridades, permitiendo una rápida respuesta ante posibles incendios. Esta solución presenta ventajas como su efectividad, fácil instalación y asequibilidad para la mayoría de las familias. Sin embargo, requiere mantenimiento regular y no es infalible, ya que podría no detectar todos los incendios.</p>
+        <p>Se recomienda la instalación de este dispositivo como medida preventiva durante la Navidad. Además, es aconsejable tomar otras precauciones, como el manejo seguro de luces navideñas, velas y el mantenimiento adecuado de chimeneas y estufas. La combinación de estas medidas puede reducir significativamente el riesgo de incendios, protegiendo así hogares, vidas y bienes durante esta festiva temporada.</p>
+        <p>Actualmente, la región está experimentando incendios en casa. Asegúrate de seguir las recomendaciones de seguridad y utiliza esta herramienta para monitorear la calidad del aire. Evita salir innecesariamente y toma precauciones adicionales.</p>
+    </header>
+    <main>
+        <img src="family.png" alt="Fondo para la family" class="image">
+    </main>
 </body>
+
 </html>

@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 
 <head>
@@ -7,50 +8,54 @@
     <title>Dashboard de Calidad del Aire</title>
     <link rel="stylesheet" href="inicio_style.css">
 </head>
-
 <body>
     <nav>
         <div class="nav-container">
             <ul class="nav-links">
+                <li><a href="index.html"  >inicio</a></li>
                 <li><a href="inicio.html" >Dispositivo 1</a></li>
-                <li><a href="dispositivo1.html" class="active">Dispositivo 2</a></li>
-                <li><a href="dispositivo2.html" >Dispositivo 3</a></li>
+                <li><a href="dispositivo1.html"class="active">Dispositivo 2</a></li>
+                <li><a href="dispositivo2.html">Dispositivo 3</a></li>
             </ul>
             <a href="admin_login.html" class="signout-button">Cerrar Sesión</a>
         </div>
     </nav>
     <header>
-        <h1>Dashboard de Monitoreo Ambiental </h1>
+        <div class="info-container">
+            <span>¡Bienvenido al Dashboard de Monitoreo Ambiental! Aquí puedes visualizar información en tiempo real, concentración de CO y más. Utiliza la barra de navegación para cambiar entre dispositivos. ¡Esperamos que encuentres útil esta herramienta!</span>
+        </div>
     </header>
     <main class="dashboard-container">
-
-        
         <div class="data-container">
             <div id="card1" class="data-box">
-                <!-- El contenido de la tarjeta de calidad del aire se generará y se insertará mediante JavaScript -->
+                <img src="celsius.png"hr alt="Calidad del Aire Icono">
+                <!-- Contenido generado con JavaScript -->
             </div>
             <div id="card2" class="data-box">
-                <!-- El contenido de la tarjeta de concentración de CO se generará y se insertará mediante JavaScript -->
+                <img src="nube-de-co2.png" alt="Concentración CO Icono">
+                <!-- Contenido generado con JavaScript -->
             </div>
             <div id="card3" class="data-box">
-                <!-- El contenido de la tarjeta de humedad se generará y se insertará mediante JavaScript -->
+                <img src="alerta.png" alt="Humedad Icono">
+                <!-- Contenido generado con JavaScript -->
             </div>
             <div id="card4" class="data-box">
-                <!-- El contenido de la tarjeta de humedad se generará y se insertará mediante JavaScript -->
+                <img src="alerta.png" alt="Temperatura Icono">
+                <!-- Contenido generado con JavaScript -->
             </div>
             <!-- Resto de las cajas de datos -->
             <!-- ... -->
         </div>
         <div class="nombre-datos">
-        <h2>DATOS CAPTURADOS</h2>
-         </div>
+            <h2>DATOS CAPTURADOS</h2>
+        </div>
         <div class="row text-center">
             <!-- Contenedor de la tabla de calidad del aire -->
-            <div class="table-container1">
+            <div class="table-container table-container1">
                 <table id="var1" class="table table-success table-striped w-100">
                     <thead>
                         <tr>
-                            <th scope="col">Calidad del Aire</th>
+                            <th scope="col">Concentracion co</th>
                             <th scope="col">Contexto</th>
                             <th scope="col">Fecha</th>
                         </tr>
@@ -60,9 +65,9 @@
                     </tbody>
                 </table>
             </div>
-        
+
             <!-- Contenedor de la tabla de concentración de CO -->
-            <div class="table-container2">
+            <div class="table-container table-container2">
                 <table id="var2" class="table table-success table-striped w-100">
                     <thead>
                         <tr>
@@ -76,59 +81,33 @@
                     </tbody>
                 </table>
             </div>
-        
+
             <!-- Contenedor de la tabla de humedad -->
-            <div class="table-container3">
-                <table id="var3" class="table table-success table-striped w-100">
-                    <thead>
-                        <tr>
-                            <th scope="col">Humedad</th>
-                            <th scope="col">Contexto</th>
-                            <th scope="col">Fecha</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <!-- Los datos se insertarán aquí -->
-                    </tbody>
-                </table>
-            </div>
-        
-            <!-- Contenedor de la tabla de temperatura -->
-            <div class="table-container4">
-                <table id="var4" class="table table-success table-striped w-100">
-                    <thead>
-                        <tr>
-                            <th scope="col">Temperatura</th>
-                            <th scope="col">Contexto</th>
-                            <th scope="col">Fecha</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <!-- Los datos se insertarán aquí -->
-                    </tbody>
-                </table>
-            </div>
+            <!-- ... -->
         </div>
 
         <div class="grafica-container">
-            <h3>Gráfica de Calidad del Aire</h3>
+            <h3>Gráfica concentración de CO</h3>
             <canvas id="graficaCalidadAire"></canvas>
         </div>
         <div class="grafica-container">
-            <h3>Gráfica de Concentración CO</h3>
+            <h3>Gráfica de temperatura CO</h3>
             <canvas id="graficaConcentracionCO"></canvas>
         </div>
-        <div class="grafica-container">
-            <h3>Gráfica de humedad</h3>
-            <canvas id="graficahumedad"></canvas>
-        </div>
-        <div class="grafica-container">
-            <h3>Gráfica de temperatura </h3>
-            <canvas id="graftemperatura"></canvas>
-        </div>
-        
     </main>
-    
+    <section class="fire-info">
+        <div class="fire-info-container">
+            <h2>Información sobre Incendios</h2>
+            <p>Actualmente, la región está experimentando incendios en casa durante la época navideña. Es fundamental seguir las recomendaciones de seguridad y utilizar esta herramienta para monitorear la concentración de monóxido de carbono y la temperatura ambiente. Toma precauciones adicionales para proteger tu hogar y bienestar durante esta festiva temporada.</p>
+        </div>
+    </section>
+    <footer>
+       
+    </footer>
+</body>
+
+
+
     <!-- ... -->
     <!-- Incluye las bibliotecas de JavaScript necesarias aquí -->
     <!-- ... -->
@@ -146,67 +125,70 @@
 
     <script>
         const creamosLaGraficaDeLinea = (grafica, datos, titulo) => {
-    let values = [];
-    let labels = [];
+            let values = [];
+            let labels = [];
 
-    for (let i = 0; i < datos.length; i++) {
-        values.push(datos[i].value)
-        labels.push(new Date(datos[i].timestamp).toLocaleString('es-CO', { timeZone: 'UTC' }))
-    }
+            for (let i = 0; i < datos.length; i++) {
+                values.push(datos[i].value)
+                labels.push(new Date(datos[i].timestamp).toLocaleString('es-CO', { timeZone: 'UTC' }))
+            }
 
-    const datosTabla = {
-        label: titulo,
-        data: values,
-        backgroundColor: 'rgba(219,142,137)',
-        borderColor: 'rgba(140,132,156)',
-        borderWidth: 1,
-    };
+            const datosTabla = {
+                label: titulo,
+                data: values,
+                backgroundColor: 'rgba(219,142,137)',
+                borderColor: 'rgba(140,132,156)',
+                borderWidth: 1,
+            };
 
 
-
-    new Chart(grafica, {
-        type: 'line',
-        data: {
-            labels: labels,
-            datasets: [datosTabla]
-        },
-        options: {
-            scales: {
-                y: { // Cambiado de 'yAxes' a 'y' para la última versión de Chart.js
-                    beginAtZero: true,
-                    min: 0,
-                    max: 6000,
-                    ticks: {
-                        // Asegúrate de que las marcas de graduación comiencen en 0 y terminen en 6000
-                        stepSize: 1000 // Cambia este valor si quieres diferentes intervalos entre las marcas de graduación
-                    }
+            new Chart(grafica, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [datosTabla]
                 },
-                x: { // Cambiado de 'xAxes' a 'x' para la última versión de Chart.js
-                    type: 'time',
-                    time: {
-                        tooltipFormat: 'll HH:mm',
-                        displayFormats: {
-                            quarter: 'MMM YYYY'
+                options: {
+                    scales: {
+                        y: { // Cambiado de 'yAxes' a 'y' para la última versión de Chart.js
+                            beginAtZero: true,
+                            min: 0,
+                            max: 6000,
+                            ticks: {
+                                // Asegúrate de que las marcas de graduación comiencen en 0 y terminen en 6000
+                                stepSize: 1000 // Cambia este valor si quieres diferentes intervalos entre las marcas de graduación
+                            }
+                        },
+                        x: { // Cambiado de 'xAxes' a 'x' para la última versión de Chart.js
+                            type: 'time',
+                            time: {
+                                tooltipFormat: 'll HH:mm',
+                                displayFormats: {
+                                    quarter: 'MMM YYYY'
+                                }
+                            },
+                            title: {
+                                display: true,
+                                text: 'Fecha'
+                            }
                         }
-                    },
-                    title: {
-                        display: true,
-                        text: 'Fecha'
                     }
                 }
-            }
+            });
         }
-    });
-}
 
+        let cantidadEnviosVar3 = 0;
+        let cantidadEnviosVar4 = 0;
         document.addEventListener('DOMContentLoaded', function () {
-            const token="BBTR-Hb40HMrF6wtabPB8Wd3lj2Y2uyOvJy"
-            const device="nodo2"
+            const token = "BBTR-Hb40HMrF6wtabPB8Wd3lj2Y2uyOvJy"
+            const device = "nodo2"
             const urlVar1 = `http://industrial.api.ubidots.com/api/v1.6/devices/${device}/concentracionco/values?token=${token}`;
-            const urlVar2 = `http://industrial.api.ubidots.com/api/v1.6/devices/${device}/temperatura   /values?token=${token}`;
+            const urlVar2 = `http://industrial.api.ubidots.com/api/v1.6/devices/${device}/temperatura/values?token=${token}`;
             const urlVar3 = `http://industrial.api.ubidots.com/api/v1.6/devices/${device}/new-variable-1/values?token=${token}`;
             const urlVar4 = `http://industrial.api.ubidots.com/api/v1.6/devices/${device}/alertatemp/values?token=${token}`;
-            function updateCard(containerId, title, value,uni) {
+            
+
+            function updateCard(containerId, title, value, uni) {
                 const cardContainer = document.querySelector(containerId);
                 let card = cardContainer.querySelector('.card');
                 if (!card) {
@@ -226,31 +208,37 @@
                 fetch(urlVar1)
                     .then(response => response.json())
                     .then(data => {
-
-                        updateCard('#card1', 'Calidad del Aire', data.results[0].value,' ppm');
+                        updateCard('#card1', 'concentracion de co', data.results[0].value, ' ppm');
                     })
-                    .catch(error => console.error('Error al obtener datos de calidad del aire:', error));
+    .catch(error => console.error('Error al obtener datos de calidad del aire:', error));
 
                 fetch(urlVar2)
                     .then(response => response.json())
                     .then(data => {
 
-                        updateCard('#card2', 'Concentración de CO', data.results[0].value,' ppm');
+                        updateCard('#card2', 'temperatura', data.results[0].value, ' °C');
                     })
-                    .catch(error => console.error('Error al obtener datos de concentración de CO:', error));
+                    .catch(error => console.error('Error al obtener datos de temperatura:', error));
 
-                fetch(urlVar3)
-                    .then(response => response.json())
-                    .then(data => {
-                        updateCard('#card3', 'Humedad', data.results[0].value,' %');
-                    })
-                    .catch(error => console.error('Error al obtener datos de concentración de CO:', error));
-                fetch(urlVar4)
-                    .then(response => response.json())
-                    .then(data => {
-                        updateCard('#card4', 'Temperatura', data.results[0].value,' °C');
-                    })
-                    .catch(error => console.error('Error al obtener datos de concentración de CO:', error));
+                    fetch(urlVar3)
+                .then(response => response.json())
+                .then(data => {
+                    // Sumar el valor obtenido
+                    const valorSumado = cantidadEnviosVar3 + data.results[0].value;
+                    // Actualizar la card con el nuevo valor y mostrar la cantidad de veces
+                    updateCard('#card3', 'usted tiene', valorSumado, '', ++cantidadEnviosVar3);
+                })
+                .catch(error => console.error('Error al obtener datos de concentración de CO:', error));
+
+            fetch(urlVar4)
+                .then(response => response.json())
+                .then(data => {
+                    // Sumar el valor obtenido
+                    const valorSumado1 = cantidadEnviosVar4 + data.results[0].value;
+                    // Actualizar la card con el nuevo valor y mostrar la cantidad de veces
+                    updateCard('#card4', 'Temperatura', valorSumado1, '', ++cantidadEnviosVar4);
+                })
+                .catch(error => console.error('Error al obtener datos de concentración de CO:', error));
 
 
                 ///parte d
@@ -300,48 +288,6 @@
 
                 }).catch(error => console.error(error));
 
-                fetch(urlVar3).then(response => response.json()).then(data => {
-                    const tbody = document.querySelector('#var3 tbody');
-                    const datos = data.results;
-                    const datosGrafica = data.results.map(item => ({ value: item.value, timestamp: item.timestamp }));
-                    creamosLaGraficaDeLinea(document.getElementById('graficahumedad'), datosGrafica, 'humedad');
-
-                    datos.forEach(obj => {
-                        var timestamp = obj.timestamp;
-                        var date = new Date(timestamp).toLocaleString('es-CO', { timeZone: 'America/Bogota' });
-
-                        const tr = document.createElement('tr');
-                        tr.innerHTML =
-                            `<td>${obj.value}</td><td>0</td><td>${date}</td>`;
-
-                        tbody.appendChild(tr);
-                    });
-
-                    const $grafica = document.querySelector("#humedad");
-                    //creamosLaGraficaDeLinea($grafica, datos, "co")
-
-                }).catch(error => console.error(error));
-
-                fetch(urlVar4).then(response => response.json()).then(data => {
-                    const tbody = document.querySelector('#var4 tbody');
-                    const datos = data.results;
-                    const datosGrafica = data.results.map(item => ({ value: item.value, timestamp: item.timestamp }));
-                    creamosLaGraficaDeLinea(document.getElementById('graftemperatura'), datosGrafica, 'temperatura');
-                    datos.forEach(obj => {
-                        var timestamp = obj.timestamp;
-                        var date = new Date(timestamp).toLocaleString('es-CO', { timeZone: 'America/Bogota' });
-
-                        const tr = document.createElement('tr');
-                        tr.innerHTML =
-                            `<td>${obj.value}</td><td>0</td><td>${date}</td>`;
-
-                        tbody.appendChild(tr);
-                    });
-
-                    const $grafica = document.querySelector("#temp");
-                    //creamosLaGraficaDeLinea($grafica, datos, "co")
-
-                }).catch(error => console.error(error));
 
             }
 

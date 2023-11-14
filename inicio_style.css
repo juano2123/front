@@ -7,22 +7,29 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: #eaf4f4;
-    padding-top: 60px; /* espacio para la barra de navegación */
+    padding-top: 60px; /* Espacio para la barra de navegación */
 }
 
 nav {
     background: #69a2b0;
     color: white;
-    position: fixed; /* fijar la barra de navegación en la parte superior */
+    position: fixed; /* Fijar la barra de navegación en la parte superior */
     top: 0;
     width: 100%;
-    z-index: 1000; /* asegurar que la barra de navegación esté sobre otros elementos */
+    z-index: 1000; /* Asegurar que la barra de navegación esté sobre otros elementos */
     padding: 10px 20px;
 }
 
 .nav-container {
     display: flex;
     justify-content: flex-end;
+}
+.data-box img {
+    max-width: 80%; /* Establece el ancho máximo al 100% del contenedor */
+    height: auto; /* Mantiene la proporción original de la imagen */
+    display: block; /* Elimina el espacio adicional que algunos navegadores agregan a las imágenes */
+    margin: 0 auto; /* Centra la imagen horizontalmente */
+    max-height: 100px; /* Establece la altura máxima deseada (ajusta según tu preferencia) */
 }
 
 .signout-button {
@@ -61,7 +68,6 @@ main.dashboard-container {
     flex-wrap: wrap;
     justify-content: center;
     gap: 20px;
-    
 }
 
 .data-box {
@@ -78,6 +84,11 @@ main.dashboard-container {
     flex-direction: column; 
 }
 
+.data-box img {
+    max-width: 80px; /* Ajustar el tamaño máximo de la imagen */
+    margin-bottom: 10px;
+}
+
 .alerts-container {
     background: #c03a2bb5;
     padding: 20px;
@@ -92,6 +103,7 @@ main.dashboard-container {
     align-items: center;
     flex-direction: column; 
 }
+
 .nav-container {
     display: flex;
     justify-content: space-between;
@@ -116,8 +128,9 @@ main.dashboard-container {
 .nav-links a.active {
     color: white; /* Color para resaltar la página actual */
 }
+
 /* Resto del código CSS */
-table-container .table {
+.table-container .table {
     background-color: white;
     border-collapse: collapse; /* Opcional: para asegurar que las celdas estén juntas */
     overflow-y: scroll; /* Proporciona un desplazamiento vertical dentro del contenedor */
@@ -157,8 +170,6 @@ table-container .table {
 .table td {
     text-align: left;
     padding: 15px;
-    
-
 }
 
 .table thead {
@@ -174,6 +185,7 @@ table-container .table {
 .table-striped tbody tr:nth-of-type(odd) {
     background-color: #f2f2f2; /* Color de fondo para las filas impares */
 }
+
 th {
     background: #fff; /* O el color de fondo de tu elección */
     position: sticky;
@@ -203,7 +215,7 @@ th {
     }
 }
 
-.nombre-datos{
+.nombre-datos {
     display: flex;
     width: 100%;
     justify-content: center;
@@ -227,8 +239,27 @@ th {
         margin-top: 20px; /* Espacio entre los contenedores en vista móvil */
     }
 }
+
 .grafica-container canvas {
     width: 600px; /* Ancho deseado */
-    height: 400px; /* Alto deseado */
+    height: 400px; /* Alto deseado */
 }
 
+.fire-info {
+    background: #e74c3c;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+.fire-info-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+.image {
+    max-width: 52%; /* Ajusta el ancho según tus necesidades */
+    height: auto; /* Para mantener la proporción original de la imagen */
+    display: block; /* Elimina el espacio adicional que algunos navegadores agregan a las imágenes */
+    margin: 0 auto; 
+    
+}

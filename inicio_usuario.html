@@ -120,6 +120,8 @@
             const urlVar2 = `http://industrial.api.ubidots.com/api/v1.6/devices/${device}/concentracionco/values?token=${token}`;
             const urlVar3 = `http://industrial.api.ubidots.com/api/v1.6/devices/${device}/humedad/values?token=${token}`;
             const urlVar4 = `http://industrial.api.ubidots.com/api/v1.6/devices/${device}/temperatura/values?token=${token}`;
+                        console.log(urlVar3)
+
             function updateCard(containerId, title, value) {
                 const cardContainer = document.querySelector(containerId);
                 let card = cardContainer.querySelector('.card');
