@@ -202,11 +202,11 @@
         document.addEventListener('DOMContentLoaded', function () {
             const token="BBTR-Hb40HMrF6wtabPB8Wd3lj2Y2uyOvJy"
             const device="nodo2"
-            const urlVar1 = `http://industrial.api.ubidots.com/api/v1.6/devices/${device}/calidadaire/values?token=${token}`;
-            const urlVar2 = `http://industrial.api.ubidots.com/api/v1.6/devices/${device}/concentracionco/values?token=${token}`;
-            const urlVar3 = `http://industrial.api.ubidots.com/api/v1.6/devices/${device}/humedad/values?token=${token}`;
-            const urlVar4 = `http://industrial.api.ubidots.com/api/v1.6/devices/${device}/temperatura/values?token=${token}`;
-            function updateCard(containerId, title, value) {
+            const urlVar1 = `http://industrial.api.ubidots.com/api/v1.6/devices/${device}/concentracionco/values?token=${token}`;
+            const urlVar2 = `http://industrial.api.ubidots.com/api/v1.6/devices/${device}/temperatura   /values?token=${token}`;
+            const urlVar3 = `http://industrial.api.ubidots.com/api/v1.6/devices/${device}/new-variable-1/values?token=${token}`;
+            const urlVar4 = `http://industrial.api.ubidots.com/api/v1.6/devices/${device}/alertatemp/values?token=${token}`;
+            function updateCard(containerId, title, value,uni) {
                 const cardContainer = document.querySelector(containerId);
                 let card = cardContainer.querySelector('.card');
                 if (!card) {
@@ -217,7 +217,7 @@
                 card.innerHTML = `
             <div class="card-body">
               <h5 class="card-title">${title}</h5>
-              <h1 class="card-title">${value}</h1>
+              <h1 class="card-title">${value}${uni}</h1>
             </div>
           `;
             }
@@ -227,7 +227,7 @@
                     .then(response => response.json())
                     .then(data => {
 
-                        updateCard('#card1', 'Calidad del Aire', data.results[0].value);
+                        updateCard('#card1', 'Calidad del Aire', data.results[0].value,' ppm');
                     })
                     .catch(error => console.error('Error al obtener datos de calidad del aire:', error));
 
@@ -235,20 +235,20 @@
                     .then(response => response.json())
                     .then(data => {
 
-                        updateCard('#card2', 'Concentración de CO', data.results[0].value);
+                        updateCard('#card2', 'Concentración de CO', data.results[0].value,' ppm');
                     })
                     .catch(error => console.error('Error al obtener datos de concentración de CO:', error));
 
                 fetch(urlVar3)
                     .then(response => response.json())
                     .then(data => {
-                        updateCard('#card3', 'Humedad', data.results[0].value);
+                        updateCard('#card3', 'Humedad', data.results[0].value,' %');
                     })
                     .catch(error => console.error('Error al obtener datos de concentración de CO:', error));
                 fetch(urlVar4)
                     .then(response => response.json())
                     .then(data => {
-                        updateCard('#card4', 'Temperatura', data.results[0].value);
+                        updateCard('#card4', 'Temperatura', data.results[0].value,' °C');
                     })
                     .catch(error => console.error('Error al obtener datos de concentración de CO:', error));
 
