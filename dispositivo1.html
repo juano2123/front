@@ -221,14 +221,24 @@
                     .catch(error => console.error('Error al obtener datos de temperatura:', error));
 
                     fetch(urlVar3)
-                .then(response => response.json())
-                .then(data => {
-                    // Sumar el valor obtenido
-                    const valorSumado = cantidadEnviosVar3 + data.results[0].value;
-                    // Actualizar la card con el nuevo valor y mostrar la cantidad de veces
-                    updateCard('#card3', 'usted tiene', valorSumado, '', ++cantidadEnviosVar3);
-                })
-                .catch(error => console.error('Error al obtener datos de concentración de CO:', error));
+    .then(response => response.json())
+    .then(data => {
+        // Verificar si el nuevo valor es mayor que el anterior
+        if (data.results[0].value > datosAntiguosVar3) {
+            // Calcular la cantidad de datos nuevos
+            const datosNuevosVar3 = data.results[0].value - datosAntiguosVar3;
+
+            // Actualizar la card y mostrar la cantidad de veces solo si hay datos nuevos
+            if (datosNuevosVar3 > 0) {
+                updateCard('#card3', 'usted tiene', data.results[0].value, '', datosNuevosVar3);
+            }
+
+            // Actualizar los datos antiguos
+            datosAntiguosVar3 = data.results[0].value;
+        }
+    })
+    .catch(error => console.error('Error al obtener datos de concentración de CO:', error));
+
 
             fetch(urlVar4)
                 .then(response => response.json())

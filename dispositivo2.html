@@ -8,27 +8,30 @@
     <title>Dashboard de Calidad del Aire</title>
     <link rel="stylesheet" href="inicio_style.css">
 </head>
+
 <body>
     <nav>
         <div class="nav-container">
             <ul class="nav-links">
-                <li><a href="index.html"  >inicio</a></li>
+                <li><a href="index.html">inicio</a></li>
                 <li><a href="inicio.html">Dispositivo 1</a></li>
                 <li><a href="dispositivo1.html">Dispositivo 2</a></li>
-                <li><a href="dispositivo2.html"class="active">Dispositivo 3</a></li>
+                <li><a href="dispositivo2.html" class="active">Dispositivo 3</a></li>
             </ul>
             <a href="admin_login.html" class="signout-button">Cerrar Sesión</a>
         </div>
     </nav>
     <header>
         <div class="info-container">
-            <span>¡Bienvenido al Dashboard de Monitoreo Ambiental! Aquí puedes visualizar información en tiempo real, concentración de CO y más. Utiliza la barra de navegación para cambiar entre dispositivos. ¡Esperamos que encuentres útil esta herramienta!</span>
+            <span>¡Bienvenido al Dashboard de Monitoreo Ambiental! Aquí puedes visualizar información en tiempo real,
+                concentración de CO y más. Utiliza la barra de navegación para cambiar entre dispositivos. ¡Esperamos
+                que encuentres útil esta herramienta!</span>
         </div>
     </header>
     <main class="dashboard-container">
         <div class="data-container">
             <div id="card1" class="data-box">
-                <img src="celsius.png"hr alt="Calidad del Aire Icono">
+                <img src="celsius.png" hr alt="Calidad del Aire Icono">
                 <!-- Contenido generado con JavaScript -->
             </div>
             <div id="card2" class="data-box">
@@ -98,135 +101,142 @@
     <section class="fire-info">
         <div class="fire-info-container">
             <h2>Información sobre Incendios</h2>
-            <p>Actualmente, la región está experimentando incendios en casa durante la época navideña. Es fundamental seguir las recomendaciones de seguridad y utilizar esta herramienta para monitorear la concentración de monóxido de carbono y la temperatura ambiente. Toma precauciones adicionales para proteger tu hogar y bienestar durante esta festiva temporada.</p>
+            <p>Actualmente, la región está experimentando incendios en casa durante la época navideña. Es fundamental
+                seguir las recomendaciones de seguridad y utilizar esta herramienta para monitorear la concentración de
+                monóxido de carbono y la temperatura ambiente. Toma precauciones adicionales para proteger tu hogar y
+                bienestar durante esta festiva temporada.</p>
         </div>
     </section>
     <footer>
-       
+
     </footer>
 </body>
 
 
 
-    <!-- ... -->
-    <!-- Incluye las bibliotecas de JavaScript necesarias aquí -->
-    <!-- ... -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
+<!-- ... -->
+<!-- Incluye las bibliotecas de JavaScript necesarias aquí -->
+<!-- ... -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@latest/dist/Chart.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@latest/dist/Chart.min.js"></script>
 
-    <script>
-        const creamosLaGraficaDeLinea = (grafica, datos, titulo) => {
-            let values = [];
-            let labels = [];
+<script>
+    const creamosLaGraficaDeLinea = (grafica, datos, titulo) => {
+        let values = [];
+        let labels = [];
 
-            for (let i = 0; i < datos.length; i++) {
-                values.push(datos[i].value)
-                labels.push(new Date(datos[i].timestamp).toLocaleString('es-CO', { timeZone: 'UTC' }))
-            }
+        for (let i = 0; i < datos.length; i++) {
+            values.push(datos[i].value)
+            labels.push(new Date(datos[i].timestamp).toLocaleString('es-CO', { timeZone: 'UTC' }))
+        }
 
-            const datosTabla = {
-                label: titulo,
-                data: values,
-                backgroundColor: 'rgba(219,142,137)',
-                borderColor: 'rgba(140,132,156)',
-                borderWidth: 1,
-            };
+        const datosTabla = {
+            label: titulo,
+            data: values,
+            backgroundColor: 'rgba(219,142,137)',
+            borderColor: 'rgba(140,132,156)',
+            borderWidth: 1,
+        };
 
 
-            new Chart(grafica, {
-                type: 'line',
-                data: {
-                    labels: labels,
-                    datasets: [datosTabla]
-                },
-                options: {
-                    scales: {
-                        y: { // Cambiado de 'yAxes' a 'y' para la última versión de Chart.js
-                            beginAtZero: true,
-                            min: 0,
-                            max: 6000,
-                            ticks: {
-                                // Asegúrate de que las marcas de graduación comiencen en 0 y terminen en 6000
-                                stepSize: 1000 // Cambia este valor si quieres diferentes intervalos entre las marcas de graduación
+        new Chart(grafica, {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [datosTabla]
+            },
+            options: {
+                scales: {
+                    y: { // Cambiado de 'yAxes' a 'y' para la última versión de Chart.js
+                        beginAtZero: true,
+                        min: 0,
+                        max: 6000,
+                        ticks: {
+                            // Asegúrate de que las marcas de graduación comiencen en 0 y terminen en 6000
+                            stepSize: 1000 // Cambia este valor si quieres diferentes intervalos entre las marcas de graduación
+                        }
+                    },
+                    x: { // Cambiado de 'xAxes' a 'x' para la última versión de Chart.js
+                        type: 'time',
+                        time: {
+                            tooltipFormat: 'll HH:mm',
+                            displayFormats: {
+                                quarter: 'MMM YYYY'
                             }
                         },
-                        x: { // Cambiado de 'xAxes' a 'x' para la última versión de Chart.js
-                            type: 'time',
-                            time: {
-                                tooltipFormat: 'll HH:mm',
-                                displayFormats: {
-                                    quarter: 'MMM YYYY'
-                                }
-                            },
-                            title: {
-                                display: true,
-                                text: 'Fecha'
-                            }
+                        title: {
+                            display: true,
+                            text: 'Fecha'
                         }
                     }
                 }
-            });
-        }
+            }
+        });
+    }
+
+    let cantidadEnviosVar3 = 0;
+    let cantidadEnviosVar4 = 0;
+    document.addEventListener('DOMContentLoaded', function () {
+        const token = "BBTR-ynfElG1Ap3Ydmj8jF9f028A0tdV418"
+        const device = "nodo3"
+        const urlVar1 = `http://industrial.api.ubidots.com/api/v1.6/devices/${device}/concentracionco/values?token=${token}`;
+        const urlVar2 = `http://industrial.api.ubidots.com/api/v1.6/devices/${device}/temperatura/values?token=${token}`;
+        const urlVar3 = `http://industrial.api.ubidots.com/api/v1.6/devices/${device}/new-variable-1/values?token=${token}`;
+        const urlVar4 = `http://industrial.api.ubidots.com/api/v1.6/devices/${device}/alertatemp/values?token=${token}`;
+        console.log(urlVar3)
 
         let cantidadEnviosVar3 = 0;
-        let cantidadEnviosVar4 = 0;
-        document.addEventListener('DOMContentLoaded', function () {
-            const token = "BBTR-ynfElG1Ap3Ydmj8jF9f028A0tdV418"
-            const device = "nodo3"
-            const urlVar1 = `http://industrial.api.ubidots.com/api/v1.6/devices/${device}/concentracionco/values?token=${token}`;
-            const urlVar2 = `http://industrial.api.ubidots.com/api/v1.6/devices/${device}/temperatura/values?token=${token}`;
-            const urlVar3 = `http://industrial.api.ubidots.com/api/v1.6/devices/${device}/new-variable-1/values?token=${token}`;
-            const urlVar4 = `http://industrial.api.ubidots.com/api/v1.6/devices/${device}/alertatemp/values?token=${token}`;
-            
 
-            function updateCard(containerId, title, value, uni) {
-                const cardContainer = document.querySelector(containerId);
-                let card = cardContainer.querySelector('.card');
-                if (!card) {
-                    card = document.createElement('div');
-                    card.setAttribute("class", "card text-center");
-                    cardContainer.appendChild(card);
-                }
-                card.innerHTML = `
+        // Declarar una variable para almacenar la cantidad anterior
+        let cantidadAnteriorVar3 = 0;
+        function updateCard(containerId, title, value, uni) {
+            const cardContainer = document.querySelector(containerId);
+            let card = cardContainer.querySelector('.card');
+            if (!card) {
+                card = document.createElement('div');
+                card.setAttribute("class", "card text-center");
+                cardContainer.appendChild(card);
+            }
+            card.innerHTML = `
             <div class="card-body">
               <h5 class="card-title">${title}</h5>
               <h1 class="card-title">${value}${uni}</h1>
             </div>
           `;
-            }
+        }
 
-            function fetchDataAndUpdate() {
-                fetch(urlVar1)
-                    .then(response => response.json())
-                    .then(data => {
-                        updateCard('#card1', 'concentracion de co', data.results[0].value, ' ppm');
-                    })
-    .catch(error => console.error('Error al obtener datos de calidad del aire:', error));
-
-                fetch(urlVar2)
-                    .then(response => response.json())
-                    .then(data => {
-
-                        updateCard('#card2', 'temperatura', data.results[0].value, ' °C');
-                    })
-                    .catch(error => console.error('Error al obtener datos de temperatura:', error));
-
-                    fetch(urlVar3)
+        function fetchDataAndUpdate() {
+            fetch(urlVar1)
                 .then(response => response.json())
                 .then(data => {
-                    // Sumar el valor obtenido
-                    const valorSumado = cantidadEnviosVar3 + data.results[0].value;
-                    // Actualizar la card con el nuevo valor y mostrar la cantidad de veces
-                    updateCard('#card3', 'usted tiene', valorSumado, '', ++cantidadEnviosVar3);
+                    updateCard('#card1', 'concentracion de co', data.results[0].value, ' ppm');
+                })
+                .catch(error => console.error('Error al obtener datos de calidad del aire:', error));
+
+            fetch(urlVar2)
+                .then(response => response.json())
+                .then(data => {
+
+                    updateCard('#card2', 'temperatura', data.results[0].value, ' °C');
+                })
+                .catch(error => console.error('Error al obtener datos de temperatura:', error));
+
+            fetch(urlVar4)
+                .then(response => response.json())
+                .then(data => {
+
+                    updateCard('#card3', 'advertencias por temperatura altas', data.results.length, '',);
+
+
                 })
                 .catch(error => console.error('Error al obtener datos de concentración de CO:', error));
 
@@ -234,68 +244,68 @@
                 .then(response => response.json())
                 .then(data => {
                     // Sumar el valor obtenido
-                    const valorSumado1 = cantidadEnviosVar4 + data.results[0].value;
+                    const num = data.results.length
                     // Actualizar la card con el nuevo valor y mostrar la cantidad de veces
-                    updateCard('#card4', 'Temperatura', valorSumado1, '', ++cantidadEnviosVar4);
+                    updateCard('#card4', 'advertencias por Co ', num, '');
                 })
                 .catch(error => console.error('Error al obtener datos de concentración de CO:', error));
 
 
-                ///parte d
+            ///parte d
 
-                fetch(urlVar1).then(response => response.json()).then(data => {
-                    const tbody = document.querySelector('#var1 tbody');
-                    const datos = data.results;
-                    const datosGrafica = data.results.map(item => ({ value: item.value, timestamp: item.timestamp }));
-                    creamosLaGraficaDeLinea(document.getElementById('graficaCalidadAire'), datosGrafica, 'Calidad del Aire');
+            fetch(urlVar1).then(response => response.json()).then(data => {
+                const tbody = document.querySelector('#var1 tbody');
+                const datos = data.results;
+                const datosGrafica = data.results.map(item => ({ value: item.value, timestamp: item.timestamp }));
+                creamosLaGraficaDeLinea(document.getElementById('graficaCalidadAire'), datosGrafica, 'Calidad del Aire');
 
-                    datos.forEach(obj => {
-                        var timestamp = obj.timestamp;
-                        var date = new Date(timestamp).toLocaleString('es-CO', { timeZone: 'America/Bogota' });
+                datos.forEach(obj => {
+                    var timestamp = obj.timestamp;
+                    var date = new Date(timestamp).toLocaleString('es-CO', { timeZone: 'America/Bogota' });
 
-                        const tr = document.createElement('tr');
-                        tr.innerHTML =
-                            `<td>${obj.value}</td><td>0</td><td>${date}</td>`;
+                    const tr = document.createElement('tr');
+                    tr.innerHTML =
+                        `<td>${obj.value}</td><td>0</td><td>${date}</td>`;
 
-                        tbody.appendChild(tr);
-                    });
+                    tbody.appendChild(tr);
+                });
 
-                    const $grafica = document.querySelector("#grafcalidadaire");
+                const $grafica = document.querySelector("#grafcalidadaire");
 
-                    //creamosLaGraficaDeLinea($grafica, datos, "sonido")
+                //creamosLaGraficaDeLinea($grafica, datos, "sonido")
 
-                }).catch(error => console.error(error));
+            }).catch(error => console.error(error));
 
-                fetch(urlVar2).then(response => response.json()).then(data => {
-                    const tbody = document.querySelector('#var2 tbody');
-                    const datos = data.results;
-                    const datosGrafica = data.results.map(item => ({ value: item.value, timestamp: item.timestamp }));
-                    creamosLaGraficaDeLinea(document.getElementById('graficaConcentracionCO'), datosGrafica, 'Concentración CO');
+            fetch(urlVar2).then(response => response.json()).then(data => {
+                const tbody = document.querySelector('#var2 tbody');
+                const datos = data.results;
+                const datosGrafica = data.results.map(item => ({ value: item.value, timestamp: item.timestamp }));
+                creamosLaGraficaDeLinea(document.getElementById('graficaConcentracionCO'), datosGrafica, 'Concentración CO');
 
-                    datos.forEach(obj => {
-                        var timestamp = obj.timestamp;
-                        var date = new Date(timestamp).toLocaleString('es-CO', { timeZone: 'America/Bogota' });
+                datos.forEach(obj => {
+                    var timestamp = obj.timestamp;
+                    var date = new Date(timestamp).toLocaleString('es-CO', { timeZone: 'America/Bogota' });
 
-                        const tr = document.createElement('tr');
-                        tr.innerHTML =
-                            `<td>${obj.value}</td><td>0</td><td>${date}</td>`;
+                    const tr = document.createElement('tr');
+                    tr.innerHTML =
+                        `<td>${obj.value}</td><td>0</td><td>${date}</td>`;
 
-                        tbody.appendChild(tr);
-                    });
+                    tbody.appendChild(tr);
+                });
 
-                    const $grafica = document.querySelector("#co");
-                    //creamosLaGraficaDeLinea($grafica, datos, "co")
+                const $grafica = document.querySelector("#co");
+                //creamosLaGraficaDeLinea($grafica, datos, "co")
 
-                }).catch(error => console.error(error));
-
-
-            }
+            }).catch(error => console.error(error));
 
 
-            fetchDataAndUpdate();
-            setInterval(fetchDataAndUpdate, 5000);
-        });
-    </script>
+        }
+
+
+        fetchDataAndUpdate();
+        setInterval(fetchDataAndUpdate, 5000);
+    });
+</script>
 </body>
 
 </html>
