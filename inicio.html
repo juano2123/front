@@ -12,46 +12,50 @@
     <nav>
         <div class="nav-container">
             <ul class="nav-links">
-                <li><a href="index.html" class="active" >inicio</a></li>
+                <li><a href="index.html"  >Inicio</a></li>
                 <li><a href="inicio.html" class="active">Dispositivo 1</a></li>
                 <li><a href="dispositivo1.html">Dispositivo 2</a></li>
                 <li><a href="dispositivo2.html">Dispositivo 3</a></li>
             </ul>
-            <a href="admin_login.html" class="signout-button">Cerrar Sesión</a>
+            <!-- <a href="admin_login.html" class="signout-button">Cerrar Sesión</a> -->
         </div>
     </nav>
     <header>
         <div class="info-container">
-            <span>¡Bienvenido al Dashboard de Monitoreo Ambiental! Aquí puedes visualizar información en tiempo real, concentración de CO y más. Utiliza la barra de navegación para cambiar entre dispositivos. ¡Esperamos que encuentres útil esta herramienta!</span>
+            <h3>¡Bienvenido al Dashboard de Monitoreo Ambiental! Aquí puedes visualizar información en tiempo real, concentración de CO y más. Utiliza la barra de navegación para cambiar entre dispositivos. ¡Esperamos que encuentres útil esta herramienta!</h3>
         </div>
     </header>
     <main class="dashboard-container">
         <div class="data-container">
-            <div id="card1" class="data-box">
+            <!-- <div id="card1" class="data-box">
                 <img src="celsius.png"hr alt="Calidad del Aire Icono">
-                <!-- Contenido generado con JavaScript -->
-            </div>
+               
+            </div> -->
             <div id="card2" class="data-box">
-                <img src="nube-de-co2.png" alt="Concentración CO Icono">
+                <img src="temp.png" alt="Concentración CO Icono">
                 <!-- Contenido generado con JavaScript -->
             </div>
             <div id="card3" class="data-box">
-                <img src="alerta.png" alt="Humedad Icono">
+                <img src="hume.png" alt="Humedad Icono">
                 <!-- Contenido generado con JavaScript -->
             </div>
             <div id="card4" class="data-box">
-                <img src="alerta.png" alt="Temperatura Icono">
+                <img src="alert-icon-red-11.png" alt="Temperatura Icono">
                 <!-- Contenido generado con JavaScript -->
             </div>
             <!-- Resto de las cajas de datos -->
             <!-- ... -->
+        </div>
+
+        <div>
+            <img src="grafica.png" alt="Concentración CO Icono">
         </div>
         <div class="nombre-datos">
             <h2>DATOS CAPTURADOS</h2>
         </div>
         <div class="row text-center">
             <!-- Contenedor de la tabla de calidad del aire -->
-            <div class="table-container table-container1">
+            <!-- <div class="table-container table-container1">
                 <table id="var1" class="table table-success table-striped w-100">
                     <thead>
                         <tr>
@@ -61,17 +65,17 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <!-- Los datos se insertarán aquí -->
+                      
                     </tbody>
                 </table>
-            </div>
+            </div> -->
 
             <!-- Contenedor de la tabla de concentración de CO -->
             <div class="table-container table-container2">
                 <table id="var2" class="table table-success table-striped w-100">
                     <thead>
                         <tr>
-                            <th scope="col">temperatura</th>
+                            <th scope="col">Temperatura</th>
                             <th scope="col">Contexto</th>
                             <th scope="col">Fecha</th>
                         </tr>
@@ -85,22 +89,41 @@
             <!-- Contenedor de la tabla de humedad -->
             <!-- ... -->
         </div>
-
-        <div class="grafica-container">
-            <h3>Gráfica concentración de CO</h3>
-            <canvas id="graficaCalidadAire"></canvas>
+        <div class="table-container table-container3">
+            <table id="var3" class="table table-success table-striped w-100">
+                <thead>
+                    <tr>
+                        <th scope="col">Humedad</th>
+                        <th scope="col">Contexto</th>
+                        <th scope="col">Fecha</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Los datos se insertarán aquí -->
+                </tbody>
+            </table>
         </div>
+
+<!-- 
         <div class="grafica-container">
-            <h3>Gráfica de temperatura CO</h3>
+            <h3>Gráfica Calidad de aire</h3>
+            <canvas id="graficaCalidadAire"></canvas>
+        </div> -->
+        <div class="grafica-container">
+            <h3>Gráfica de temperatura </h3>
             <canvas id="graficaConcentracionCO"></canvas>
         </div>
+        <div class="grafica-container">
+            <h3>Gráfica humedad</h3>
+            <canvas id="graficaHumedad"></canvas>
+        </div>
     </main>
-    <section class="fire-info">
+    <!-- <section class="fire-info">
         <div class="fire-info-container">
             <h2>Información sobre Incendios</h2>
             <p>Actualmente, la región está experimentando incendios en casa durante la época navideña. Es fundamental seguir las recomendaciones de seguridad y utilizar esta herramienta para monitorear la concentración de monóxido de carbono y la temperatura ambiente. Toma precauciones adicionales para proteger tu hogar y bienestar durante esta festiva temporada.</p>
         </div>
-    </section>
+    </section> -->
     <footer>
        
     </footer>
@@ -130,7 +153,7 @@
 
             for (let i = 0; i < datos.length; i++) {
                 values.push(datos[i].value)
-                labels.push(new Date(datos[i].timestamp).toLocaleString('es-CO', { timeZone: 'UTC' }))
+                labels.push(new Date(datos[i].timestamp).toLocaleString('es-CO', { timeZone: 'America/Bogota' }))
             }
 
             const datosTabla = {
@@ -182,9 +205,9 @@
         document.addEventListener('DOMContentLoaded', function () {
             const token = "BBUS-q15oyLS9UqOse9UUeGAS5CQyKKJ3Eh"
             const device = "nodo1"
-            const urlVar1 = `https://industrial.api.ubidots.com/api/v1.6/devices/${device}/concentracionco/values?token=${token}`;
+            const urlVar1 = `https://industrial.api.ubidots.com/api/v1.6/devices/${device}/calidadaire/values?token=${token}`;
             const urlVar2 = `https://industrial.api.ubidots.com/api/v1.6/devices/${device}/temperatura/values?token=${token}`;
-            const urlVar3 = `https://industrial.api.ubidots.com/api/v1.6/devices/${device}/new-variable-1/values?token=${token}`;
+            const urlVar3 = `https://industrial.api.ubidots.com/api/v1.6/devices/${device}/humedad/values?token=${token}`;
             const urlVar4 = `https://industrial.api.ubidots.com/api/v1.6/devices/${device}/alertatemp/values?token=${token}`;
             
 
@@ -208,7 +231,7 @@
                 fetch(urlVar1)
                     .then(response => response.json())
                     .then(data => {
-                        updateCard('#card1', 'concentracion de co', data.results[0].value, ' ppm');
+                        updateCard('#card1', 'Calidad de Aire', data.results[0].value, ' ppm');
                     })
     .catch(error => console.error('Error al obtener datos de calidad del aire:', error));
 
@@ -216,7 +239,7 @@
                     .then(response => response.json())
                     .then(data => {
 
-                        updateCard('#card2', 'temperatura', data.results[0].value, ' °C');
+                        updateCard('#card2', 'Temperatura', data.results[0].value, ' °C');
                     })
                     .catch(error => console.error('Error al obtener datos de temperatura:', error));
 
@@ -224,7 +247,7 @@
                 .then(response => response.json())
                 .then(data => {
 
-                    updateCard('#card3', 'advertencias por temperatura altas', data.results.length, '',);
+                    updateCard('#card3', 'Humedad', data.results[0].value, ' %',);
 
 
                 })
@@ -236,7 +259,7 @@
                     // Sumar el valor obtenido
                     const num = data.results.length
                     // Actualizar la card con el nuevo valor y mostrar la cantidad de veces
-                    updateCard('#card4', 'advertencias por Co ', num, '');
+                    updateCard('#card4', 'Advertencias temperatura altas ', num, '');
                 })
                 .catch(error => console.error('Error al obtener datos de concentración de CO:', error));
 
@@ -244,52 +267,94 @@
                 ///parte d
 
                 fetch(urlVar1).then(response => response.json()).then(data => {
-                    const tbody = document.querySelector('#var1 tbody');
-                    const datos = data.results;
-                    const datosGrafica = data.results.map(item => ({ value: item.value, timestamp: item.timestamp }));
-                    creamosLaGraficaDeLinea(document.getElementById('graficaCalidadAire'), datosGrafica, 'Calidad del Aire');
+                const tbody = document.querySelector('#var1 tbody');
+                const datos = data.results;
+                let datosGrafica = data.results.map(item => ({ value: item.value, timestamp: item.timestamp }));
 
-                    datos.forEach(obj => {
-                        var timestamp = obj.timestamp;
-                        var date = new Date(timestamp).toLocaleString('es-CO', { timeZone: 'America/Bogota' });
+                // Invertir solo los datos para la gráfica
+                datosGrafica = datosGrafica.reverse();
 
-                        const tr = document.createElement('tr');
-                        tr.innerHTML =
-                            `<td>${obj.value}</td><td>0</td><td>${date}</td>`;
+                // Crear la gráfica con los datos invertidos
+                creamosLaGraficaDeLinea(document.getElementById('graficaCalidadAire'), datosGrafica, 'Calidad del Aire');
 
-                        tbody.appendChild(tr);
-                    });
+                // Agregar los datos en el orden original a la tabla
+                datos.forEach(obj => {
+                    var timestamp = obj.timestamp;
+                    var date = new Date(timestamp).toLocaleString('es-CO', { timeZone: 'America/Bogota' });
 
-                    const $grafica = document.querySelector("#grafcalidadaire");
+                    const tr = document.createElement('tr');
+                    tr.innerHTML = `<td>${obj.value}</td><td>0</td><td>${date}</td>`;
 
-                    //creamosLaGraficaDeLinea($grafica, datos, "sonido")
+                    tbody.appendChild(tr);
+                });
 
-                }).catch(error => console.error(error));
+            }).catch(error => console.error(error));
 
-                fetch(urlVar2).then(response => response.json()).then(data => {
-                    const tbody = document.querySelector('#var2 tbody');
-                    const datos = data.results;
-                    const datosGrafica = data.results.map(item => ({ value: item.value, timestamp: item.timestamp }));
-                    creamosLaGraficaDeLinea(document.getElementById('graficaConcentracionCO'), datosGrafica, 'Concentración CO');
+            fetch(urlVar2).then(response => response.json()).then(data => {
+                const tbody = document.querySelector('#var2 tbody');
+                const datos = data.results;
+                let datosGrafica = data.results.map(item => ({ value: item.value, timestamp: item.timestamp }));
 
-                    datos.forEach(obj => {
-                        var timestamp = obj.timestamp;
-                        var date = new Date(timestamp).toLocaleString('es-CO', { timeZone: 'America/Bogota' });
+                // Invertir solo los datos para la gráfica
+                datosGrafica = datosGrafica.reverse();
 
-                        const tr = document.createElement('tr');
-                        tr.innerHTML =
-                            `<td>${obj.value}</td><td>0</td><td>${date}</td>`;
+                // Crear la gráfica con los datos invertidos
+                creamosLaGraficaDeLinea(document.getElementById('graficaConcentracionCO'), datosGrafica, 'Concentración CO');
 
-                        tbody.appendChild(tr);
-                    });
+                // Agregar los datos en el orden original a la tabla
+                datos.forEach(obj => {
+                    var timestamp = obj.timestamp;
+                    var date = new Date(timestamp).toLocaleString('es-CO', { timeZone: 'America/Bogota' });
 
-                    const $grafica = document.querySelector("#co");
-                    //creamosLaGraficaDeLinea($grafica, datos, "co")
+                    const tr = document.createElement('tr');
+                    tr.innerHTML = `<td>${obj.value}</td><td>0</td><td>${date}</td>`;
 
-                }).catch(error => console.error(error));
+                    tbody.appendChild(tr);
+                });
+
+            }).catch(error => console.error(error));
 
 
-            }
+
+        }
+
+
+        fetch(urlVar3).then(response => response.json()).then(data => {
+            const tbody = document.querySelector('#var3 tbody');
+            let datos = data.results;
+            let datosGrafica = data.results.map(item => ({ value: item.value, timestamp: item.timestamp }));
+
+            console.log("Datos originales:", datos);
+
+            // Invertir el orden de los datos
+
+            datosGrafica = datosGrafica.reverse();
+
+            console.log("Datos invertidos:", datos);
+
+            // Crear la gráfica con los datos invertidos
+            creamosLaGraficaDeLinea(document.getElementById('graficaHumedad'), datosGrafica, 'Humedad');
+
+            // Agregar los datos invertidos a la tabla
+            datos.forEach(obj => {
+                var timestamp = obj.timestamp;
+                var date = new Date(timestamp).toLocaleString('es-CO', { timeZone: 'America/Bogota' });
+console.log(datosGrafica)
+                const tr = document.createElement('tr');
+                tr.innerHTML = `<td>${obj.value}</td><td>0</td><td>${date}</td>`;
+
+                tbody.appendChild(tr);
+            });
+
+            const $grafica = document.querySelector("#grafcalidadaire");
+
+            // Si necesitas usar los datos invertidos aquí, asegúrate de referenciar `datos` o `datosGrafica` según corresponda
+            // creamosLaGraficaDeLinea($grafica, datos, "sonido")
+
+        }).catch(error => {
+            console.error(error);
+        });
+
 
 
             fetchDataAndUpdate();

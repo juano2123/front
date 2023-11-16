@@ -6,12 +6,12 @@
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: #eaf4f4;
+    background: #d9e5d4;
     padding-top: 60px; /* Espacio para la barra de navegación */
 }
 
 nav {
-    background: #69a2b0;
+    background: #7ac253;
     color: white;
     position: fixed; /* Fijar la barra de navegación en la parte superior */
     top: 0;
@@ -71,7 +71,7 @@ main.dashboard-container {
 }
 
 .data-box {
-    background: #a9cfd1;
+    background: #7ac253;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
